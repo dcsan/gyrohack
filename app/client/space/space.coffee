@@ -88,8 +88,8 @@ enterRoom = (room) ->
 
 # window events have to be removed manually when leaving page
 Template.space.exitRoom = (room) ->
-  console.log('exitRoom', room)
-  window.removeEventListener('devicemotion', deviceMotionHandler, false);
+  console.log('player exitRoom', room)
+  window.removeEventListener('devicemotion', deviceMotionHandler, false)
 
   # $(window).off 'devicemotion'
 
