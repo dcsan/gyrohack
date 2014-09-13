@@ -1,4 +1,4 @@
-lastEventTime = 0
+lastEventTime = (new Date()).getTime()
 
 player = null
 
@@ -11,15 +11,18 @@ resizeHandler = (evt) ->
 
 deviceMotionHandler = (eventData) ->
   return unless player
+
+  curEventTime = (new Date()).getTime()
+  if (curEventTime - lastEventTime) < 500
+    return
+
+  lastEventTime = curEventTime
+  console.log("curTime", curEventTime)
+  
   console.log("deviceMotionHandler", eventData)
   info = undefined
   xyz = "[X, Y, Z]"
 
-  sampleTime = eventData.interval
-  console.log("sampleTime", sampleTime)
-  # // Grab the refresh interval from the results
-  document.getElementById("moInterval").innerHTML = sampleTime
-  
   # Grab the acceleration from the results
   acceleration = eventData.acceleration
   info = xyz.replace("X", acceleration.x)
