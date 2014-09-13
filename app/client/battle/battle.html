@@ -1,0 +1,23 @@
+<template name="battle">
+  <h1>battle</h1>
+
+  <div id="msg">ready</div>
+
+  {{#each tanks}}
+  <div class="player-box" id="player-{{name}}" style="top:{{top}}px; left:{{left}}px;">
+    <div class="player-label">
+      name: {{name}}
+    </div>
+
+    <img  
+      class='player-icon' 
+      id="tank-{{name}}"
+      style="transform: rotate({{rotate}}deg);"
+      src="/images/players/p{{pid}}.png"
+    />
+
+  </div>
+  {{/each}}
+
+
+</template>

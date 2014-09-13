@@ -29,20 +29,29 @@ Router.map ->
       playerCount: Players.find().count()
       players: Players.find()
 
+  @route "battle",
+    path: "/battle/:room"
+    waitOn: ->
+      Meteor.subscribe("Tanks", {room: parseInt(@params.room) })
+    data: ->
+      if @ready()
+        blob = {
+          tankCount: Tanks.find().count()
+          tanks: Tanks.find()
+        }
+        Template.battle.initBattle(blob)
+        return blob
+    onStop: ->
+      Template.battle.exitRoom(@params.room)
 
   @route "space",
     path: "/space/:room?"
     data: ->
-      if @ready()
-        playerName = @params.room
-        return {
-          playerName: playerName
-          player: Players.findOne({name: playerName})
-        }
-
-    # onRun: ->
-    #   Template.space.enterRoom(@params.room)
-
+      playerName = @params.room
+      return {
+        playerName: playerName
+        player: Players.findOne({name: playerName})
+      }
     onStop: ->
       Template.space.exitRoom(@params.room)
 
