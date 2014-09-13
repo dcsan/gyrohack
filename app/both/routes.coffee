@@ -6,9 +6,13 @@ Router.map ->
     path: "/lobby"
 
   @route "space",
-    path: "/space/:cname?"
+    path: "/space/:room?"
     data: ->
-      cname: @params.cname
+      playerName = "A"
+      return {
+        playerName: playerName
+        player: Players.findOne({name: playerName})
+      }
 
   @route "viewer",
     path: "/viewer/:playerName?"
