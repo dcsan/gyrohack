@@ -13,24 +13,23 @@ body{
 }
 
 .headerimage{
-	height:95px;
-	width:100px;
-	display: inline;
-	vertical-align: middle;
+	height:190px;
+	width:200px;
+}
+
+.textcenter {
+	text-align: center;	
 }
 
 .header{
-	height:100px;
-	margin-top: 13%;
-	margin-left:5%;
-	background-color: #EEF0F0;
+	margin-top: 3%;
+	text-align: center;
 }
 
 .logo-title{
 	font-size:50px;
 	margin-left:10px;
 	color: #3c464f;
-	display: inline;
 	font-family: 'Arvo', serif;
 }
 
@@ -39,70 +38,33 @@ body{
 	color:#74AAAB;
 }
 
-.mainbody{
-	width: 95%;
-	margin-top: 2%;
-	margin-left:5%;
-}
-
 .text {
-	width: 700px;
 	line-height: 1.4;
 	font-size: 25px;
+	text-align: center;
+	margin-top: 3%;	
 }
 
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+.btn-green{
+margin: 30px 0 0 0;
+background: #74AAAB;
+font-size: 1em;
+color: #fff;
+text-transform: uppercase;
+letter-spacing: 2px;
+border-radius: 30px;
+padding: 10px 20px;
+overflow: hidden;
 }
 
-li {
-    display: inline;
-    margin-right: 15px;
-}
-
-li > a {
-	color:#3c464f;
-	text-decoration: none;
-	font-family: 'Arvo', serif;
-	font-size: 20px;
-}
-
-.footer {
-	position:fixed;
-	bottom:5%;
-	margin-left: 5%;
-}
-
-.classname {
-	background-color:#74AAAB;
-	-webkit-border-top-left-radius:6px;
-	-moz-border-radius-topleft:6px;
-	border-top-left-radius:6px;
-	-webkit-border-top-right-radius:6px;
-	-moz-border-radius-topright:6px;
-	border-top-right-radius:6px;
-	-webkit-border-bottom-right-radius:6px;
-	-moz-border-radius-bottomright:6px;
-	border-bottom-right-radius:6px;
-	-webkit-border-bottom-left-radius:6px;
-	-moz-border-radius-bottomleft:6px;
-	border-bottom-left-radius:6px;
-	text-indent:0;
-	display:inline-block;
-	color:#fff;
-	font-style:normal;
-	height:50px;
-	line-height:50px;
-	width:250px;
-	text-decoration:none;
-	text-align:center;
-}
-.classname:hover {
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
-	background-color:#3D6666;
-}.classname:active {
-	position:relative;
-	top:1px;
+.btn-green:hover{
+margin: 30px 0px 0 0px;
+background: #3C464F;
+font-size: 1em;
+color: #fff;
+text-transform: uppercase;
+letter-spacing: 2px;
+border-radius: 30px;
+padding: 10px 20px;
+overflow: hidden;
 }

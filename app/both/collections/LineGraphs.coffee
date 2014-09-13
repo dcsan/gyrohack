@@ -8,6 +8,7 @@ Meteor.startup ->
     # hard code to bind to A's data
     lg = LineGraphs.insert({
       player_name: "A",
-      data: []
+      data: [], # sampling every N seconds
+      median_data: [] # median of values for each N seconds
     })
 

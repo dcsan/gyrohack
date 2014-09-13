@@ -7,5 +7,6 @@ standard-app-packages
 iron:router
 coffeescript
 mizzao:bootstrap-3
+d3
 sergeyt:d3
 sewdn:velocityjs

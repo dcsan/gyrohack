@@ -7,5 +7,8 @@ Template.viewer.clip = (v) ->
   return Math.round(v*decs)/decs
 
 Template.viewer.rendered = () ->
-  player = Players.findOne()
-  window.player = player
+  return
+
+Template.space.exitRoom = (room) ->
+  console.log('viewer exitRoom', room)
+

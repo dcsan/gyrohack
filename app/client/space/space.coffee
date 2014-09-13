@@ -13,13 +13,12 @@ deviceMotionHandler = (eventData) ->
   return unless player
 
   curEventTime = (new Date()).getTime()
-  if (curEventTime - lastEventTime) < 500
-    return
+  return if (curEventTime - lastEventTime) < 500
 
   lastEventTime = curEventTime
-  console.log("curTime", curEventTime)
+  # console.log("curTime", curEventTime)
   
-  console.log("deviceMotionHandler", eventData)
+  # console.log("deviceMotionHandler", eventData)
   info = undefined
   xyz = "[X, Y, Z]"
 
@@ -44,7 +43,7 @@ deviceMotionHandler = (eventData) ->
   info = info.replace("Z", rotation.gamma)
   document.getElementById("moRotation").innerHTML = info
 
-  console.log(eventData.interval)
+  # console.log(eventData.interval)
 
   Players.update(
     player._id,
@@ -52,19 +51,6 @@ deviceMotionHandler = (eventData) ->
       eventData: eventData
     }
   )
-
-  lg = LineGraphs.findOne({"player_name": "A"})
-  data = lg.data or []
-  sample = eventData.acceleration.x
-  data.push(sample)
-
-  LineGraphs.update(
-    lg._id,
-    $set: {
-      data: data
-    }
-  )
-  
   return
 
 Template.space.rendered = (obj) ->
@@ -89,9 +75,7 @@ enterRoom = (room) ->
 
 # window events have to be removed manually when leaving page
 Template.space.exitRoom = (room) ->
-  console.log('exitRoom', room)
-  window.removeEventListener('devicemotion', deviceMotionHandler, false);
+  console.log('player exitRoom', room)
+  window.removeEventListener('devicemotion', deviceMotionHandler, false)
 
   # $(window).off 'devicemotion'
-
-
