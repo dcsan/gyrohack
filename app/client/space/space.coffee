@@ -51,16 +51,6 @@ deviceMotionHandler = (eventData) ->
       eventData: eventData
     }
   )
-
-  room = Rooms.findOne({room_name: "the room"})
-
-  Rooms.update(
-    room._id,
-    $set: {
-      status: "trigger a change event" 
-    }
-  )
-  
   return
 
 Template.space.rendered = (obj) ->
@@ -77,20 +67,6 @@ enterRoom = (room) ->
   $(window).on 'resize', (e) -> resizeHandler
   window.addEventListener('devicemotion', deviceMotionHandler, false)
 
-  # find "the room" and join (only one room for now)
-  room = Rooms.findOne({name: "the room"})
-  window.room = room # debug
-
-  player_names = room.player_names or []
-  player_names.push player.name
-
-  Rooms.update(
-    room._id,
-    $set: {
-      player_names: player_names
-    }
-  )
-
   # $(window).on 'devicemotion', (e) -> deviceMotionHandler
   # window.addEventListener "deviceorientation", ( (event) ->
   #   deviceMotionHandler(event)
@@ -103,17 +79,3 @@ Template.space.exitRoom = (room) ->
   window.removeEventListener('devicemotion', deviceMotionHandler, false)
 
   # $(window).off 'devicemotion'
-
-  room = Rooms.findOne({name: "the room"})
-
-  player_names = room.player_names or []
-
-  index_to_remove = player_names.indexOf(player.name)
-  player_names.splice(index_to_remove, 1)
-
-  Rooms.update(
-    room._id,
-    $set: {
-      player_names: player_names
-    }
-  )

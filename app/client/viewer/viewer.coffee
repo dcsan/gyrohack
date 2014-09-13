@@ -7,13 +7,7 @@ Template.viewer.clip = (v) ->
   return Math.round(v*decs)/decs
 
 Template.viewer.rendered = () ->
-  this.autorun ->
-    room = Rooms.findOne({name: "the room"})
-    window.room = room # debug
-    players = []
-    for player_name in room.player_names
-        players.push Players.findOne({name: player_name})
-    return
+  return
 
 Template.space.exitRoom = (room) ->
   console.log('viewer exitRoom', room)
