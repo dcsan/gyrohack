@@ -6,3 +6,10 @@ if Meteor.isServer
     p = Players.find(query)
     return p
 
+  Players.allow
+    insert: () ->
+      return true
+    update: () ->
+      return true
+    remove: () ->
+      return true
