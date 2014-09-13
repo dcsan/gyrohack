@@ -16,7 +16,7 @@ deviceMotionHandler = (eventData) ->
   @gamma_buffer.push eventData.rotationRate.gamma
 
   curEventTime = (new Date()).getTime()
-  return if (curEventTime - lastEventTime) < 500
+  return if (curEventTime - lastEventTime) < 100
 
   lastEventTime = curEventTime
   #console.log("pilot updated at, curTime", curEventTime)
@@ -65,7 +65,7 @@ deviceMotionHandler = (eventData) ->
     ave = Math.abs(ave)
     rotate = ave * 25
 
-  console.log("rotate updated to: " + rotate)
+  # console.log("rotate updated to: " + rotate)
 
   Players.update(
     player._id,

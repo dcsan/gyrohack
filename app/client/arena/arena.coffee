@@ -1,7 +1,6 @@
 newPos = () ->
   console.log("newPos")
 
-
 Template.arena.rendered = () ->
   newPos()
 
