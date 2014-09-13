@@ -6,3 +6,6 @@
 standard-app-packages
 autopublish
 insecure
+iron:router
+coffeescript
+
