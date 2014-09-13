@@ -9,7 +9,15 @@ h1, h2, h3, h4, h5, h6, p{
 }
 
 body{
-	background-color: #EEF0F0;
+	background-color: #DDD4CA;
+}
+
+a{
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: none;
 }
 
 .headerimage{
@@ -21,13 +29,22 @@ body{
 	text-align: center;	
 }
 
+.demoscreen{
+	height:400px;
+}
+
+.white {
+	background-color: white;
+}
+
 .header{
-	margin-top: 3%;
+	margin-top: 7%;
 	text-align: center;
 }
 
+
 .logo-title{
-	font-size:50px;
+	font-size:60px;
 	margin-left:10px;
 	color: #3c464f;
 	font-family: 'Arvo', serif;
@@ -35,7 +52,7 @@ body{
 
 .subtext {
 	font-size:20px;
-	color:#74AAAB;
+	color:#B24738;
 }
 
 .text {
@@ -45,9 +62,9 @@ body{
 	margin-top: 3%;	
 }
 
-.btn-green{
+.btn-red{
 margin: 30px 0 0 0;
-background: #74AAAB;
+background: #B24738;
 font-size: 1em;
 color: #fff;
 text-transform: uppercase;
@@ -57,7 +74,7 @@ padding: 10px 20px;
 overflow: hidden;
 }
 
-.btn-green:hover{
+.btn-red:hover{
 margin: 30px 0px 0 0px;
 background: #3C464F;
 font-size: 1em;
