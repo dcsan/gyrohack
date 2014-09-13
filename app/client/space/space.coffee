@@ -1,6 +1,22 @@
+lastEventTime = 0
+
+player = null
+
+initGame = () ->
+  Players.insert({
+    name: "A"
+  })
+  player = Players.findOne({name:'A'})
+  window.player = player
+
 deviceMotionHandler = (eventData) ->
   info = undefined
   xyz = "[X, Y, Z]"
+
+  sampleTime = eventData.interval
+  console.log("sampleTime", sampleTime)
+  # // Grab the refresh interval from the results
+  document.getElementById("moInterval").innerHTML = sampleTime
   
   # Grab the acceleration from the results
   acceleration = eventData.acceleration
@@ -22,12 +38,15 @@ deviceMotionHandler = (eventData) ->
   info = info.replace("Y", rotation.beta)
   info = info.replace("Z", rotation.gamma)
   document.getElementById("moRotation").innerHTML = info
+
+  Players.update(
+    player._id,
+    eventData: eventData
+  )
   
-  # // Grab the refresh interval from the results
-  info = eventData.interval
-  document.getElementById("moInterval").innerHTML = info
   return
 
 Template.space.rendered = ->
   console.log("attaching events")
+  initGame()
   window.addEventListener('devicemotion', deviceMotionHandler, false);
