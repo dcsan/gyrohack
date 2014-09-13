@@ -1,6 +1,18 @@
 <template name="arena">
   <h1>Arena</h1>
 
-  <img id="p1" class='player' src="/images/players/p1.png" />
+  <img id="p1" height='50px' class='player' src="/images/players/p1.png" />
+
+  <div class="playerInfo">
+  playerCount: {{players.length}} <br>
+
+  {{#each players}}
+  <div>
+    name: {{name}}
+    room: {{room}}
+  </div>
+  {{/each}}
+
+  </div>
 
 </template>

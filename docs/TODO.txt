@@ -1,0 +1,17 @@
+TODO
+
+
+- lobby
+select player
+
+- controller
+
+
+- arena
+respond to device input
+rotate 
+move in rotate
+fire
+collission detect with other tanks
+
+display other players

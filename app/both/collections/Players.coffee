@@ -1,12 +1,8 @@
 @Players = new Meteor.Collection('Players')
 
-Meteor.startup ->
-  if Meteor.isServer
-    console.log("startup")
-    Players.remove({})
-    Players.insert({
-      name: "A"
-    })
-    Players.insert({
-      name: "B"
-    })
+if Meteor.isServer
+  Meteor.publish "Players", (query) ->
+    console.log("sub.Players", query)
+    p = Players.find(query)
+    return p
+

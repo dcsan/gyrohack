@@ -6,6 +6,8 @@ Router.configure
 Router.map ->
   @route "home",
     path: "/"
+    waitOn: ->
+      Meteor.subscribe("Players", {} )
     data: ->
       players: Players.find().fetch()
 
@@ -19,7 +21,13 @@ Router.map ->
     path: "/mobile"
 
   @route "arena",
-    path: "/arena"
+    path: "/arena/:room"
+    waitOn: ->
+      roomId = parseInt(@params.room)
+      Meteor.subscribe("Players", {room: roomId })
+    data: ->
+      players: Players.find()
+
 
   @route "space",
     path: "/space/:room?"

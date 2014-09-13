@@ -2,3 +2,10 @@
   position: absolute;
   background-color: #F00;
 }
+
+.playerInfo {
+  position: fixed;
+  bottom: 100px;
+  background-color: black;
+  color: white;
+}

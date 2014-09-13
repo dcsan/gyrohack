@@ -2,6 +2,12 @@
 
 <h1>Home</h1>
 
+  <a class="btn btn-large btn-default" href="/arena/1">arena/1</a> 
+  <br/>
+  <a class="btn btn-large btn-default" href="/arena/2">arena/2</a>
+
+  <hr>
+
   <table>
   {{#each players}}
     <tr>
@@ -10,6 +16,13 @@
           Player {{this.name}}
         </span>
       </td>
+
+      <td>
+        <span class="btn btn-large btn-primary">
+          Room {{this.room}}
+        </span>
+      </td>
+
       <td>
         <a class="btn btn-large btn-default" 
           href="/viewer/{{this.name}}">viewer</a>
