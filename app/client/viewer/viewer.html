@@ -2,15 +2,20 @@
 
   <h2>Player: {{playerName}}</h2>
 
-  <p>
-    id: {{player._id}}
-  </p>
+  <div>
+    <p>
+      name: {{player.name}}
+    </p>
+    <p>
+      id: {{player._id}}
+    </p>
+  </div>
 
   <table>
     <tr>
-      <td>x</td>
-      <td>y</td>
-      <td>z</td>
+      <td width=100>x</td>
+      <td width=100>y</td>
+      <td width=100>z</td>
     </tr>
     <tr>
       <td>{{clip player.eventData.acceleration.x}}</td>
