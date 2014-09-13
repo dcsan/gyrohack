@@ -15,6 +15,12 @@ Router.map ->
   @route "splash",
     path: "/splash"
 
+  @route "mobile",
+    path: "/mobile"
+
+  @route "arena",
+    path: "/arena"
+
   @route "space",
     path: "/space/:room?"
     data: ->
