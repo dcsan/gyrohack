@@ -1,5 +1,8 @@
 @Tanks = new Meteor.Collection('Tanks')
 
+BOOST_SPEED = 10
+ROTATE_SPEED = 10
+
 if Meteor.isServer
   Meteor.publish "Tanks", (query) ->
     console.log("sub.Tanks", query)
@@ -15,15 +18,27 @@ if Meteor.isServer
       return true
 
 Tanks.helpers
-  
+
+  setProps: (props) ->
+    Tanks.update(
+      @_id,
+      $set: props
+    )
+    _.extend(@, props)
+    # console.log('player.setProps', props, @)
+
   msg: (txt) ->
     $("#msg").text(txt)
   
-  boost: (vec) ->
-    @msg("boost #{vec}")
+  doBoost: (vel) ->
+    t = @top + (vel * BOOST_SPEED)
+    @setProps(top: t)
+    @msg("top #{@top}")
 
-  rotate: (deg) ->
-    @msg("turn #{deg}")
+  doRotate: (deg) ->
+    v = @rotate + (deg * ROTATE_SPEED)
+    @setProps(rotate: v)
+    @msg("rotate #{@rotate}")
 
-  shoot: (vec) ->
-    @msg("boost #{vec}")
+  doShoot: (vec) ->
+    @msg("shoot #{vec}")
