@@ -12,6 +12,9 @@ Router.map ->
   @route "lobby",
     path: "/lobby"
 
+  @route "splash",
+    path: "/splash"
+
   @route "space",
     path: "/space/:room?"
     data: ->
