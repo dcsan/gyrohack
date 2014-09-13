@@ -4,6 +4,9 @@ Meteor.startup ->
   if Meteor.isServer
     console.log("startup")
     Players.remove({})
-    p = Players.insert({
+    Players.insert({
       name: "A"
+    })
+    Players.insert({
+      name: "B"
     })

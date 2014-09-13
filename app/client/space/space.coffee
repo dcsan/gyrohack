@@ -36,6 +36,8 @@ deviceMotionHandler = (eventData) ->
   info = info.replace("Z", rotation.gamma)
   document.getElementById("moRotation").innerHTML = info
 
+  console.log(eventData.interval)
+
   Players.update(
     player._id,
     $set: {
@@ -44,11 +46,14 @@ deviceMotionHandler = (eventData) ->
   )
 
   lg = LineGraphs.findOne({"player_name": "A"})
+  data = lg.data or []
+  sample = eventData.acceleration.x
+  data.push(sample)
 
   LineGraphs.update(
     lg._id,
     $set: {
-      data: new_data
+      data: data
     }
   )
   
