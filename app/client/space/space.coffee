@@ -2,14 +2,15 @@ lastEventTime = 0
 
 player = null
 
-initGame = () ->
-  player = Players.findOne({name:'A'})
+initGame = (data) ->
+  player = Players.findOne({name:data.playerName})
   window.player = player
 
 resizeHandler = (evt) ->
   console.log("resizeHandler", evt)
 
 deviceMotionHandler = (eventData) ->
+  return unless player
   console.log("deviceMotionHandler", eventData)
   info = undefined
   xyz = "[X, Y, Z]"
@@ -63,8 +64,11 @@ deviceMotionHandler = (eventData) ->
   
   return
 
-Template.space.rendered = ->
-  initGame()
+Template.space.rendered = (obj) ->
+  # data = obj.data
+  console.log("rendered", obj, this)
+  console.log("data", this.data)
+  initGame(this.data)
   enterRoom()
 
 moveEvent = null
@@ -72,8 +76,9 @@ moveEvent = null
 enterRoom = (room) ->
   console.log("enterRoom", room)
   $(window).on 'resize', (e) -> resizeHandler
-  # $(window).on 'devicemotion', (e) -> deviceMotionHandler
   window.addEventListener('devicemotion', deviceMotionHandler, false)
+
+  # $(window).on 'devicemotion', (e) -> deviceMotionHandler
   # window.addEventListener "deviceorientation", ( (event) ->
   #   deviceMotionHandler(event)
   # ), false

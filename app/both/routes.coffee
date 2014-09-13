@@ -24,11 +24,12 @@ Router.map ->
   @route "space",
     path: "/space/:room?"
     data: ->
-      playerName = @params.room
-      return {
-        playerName: playerName
-        player: Players.findOne({name: playerName})
-      }
+      if @ready()
+        playerName = @params.room
+        return {
+          playerName: playerName
+          player: Players.findOne({name: playerName})
+        }
 
     # onRun: ->
     #   Template.space.enterRoom(@params.room)
