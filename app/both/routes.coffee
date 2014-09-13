@@ -29,6 +29,16 @@ Router.map ->
       playerCount: Players.find().count()
       players: Players.find()
 
+  @route "battle",
+    path: "/battle/:room"
+    waitOn: ->
+      roomId = parseInt(@params.room)
+      Meteor.subscribe("Players", {room: roomId })
+    data: ->
+      playerCount: Players.find().count()
+      players: Players.find()
+    onStop: ->
+      Template.space.exitRoom(@params.room)
 
   @route "space",
     path: "/space/:room?"

@@ -1,6 +1,5 @@
 TODO
 
-
 - lobby
 select player
 
@@ -8,6 +7,8 @@ select player
 
 
 - arena
+drive player loc from CS code?
+
 respond to device input
 rotate 
 move in rotate
