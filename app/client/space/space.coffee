@@ -42,10 +42,19 @@ deviceMotionHandler = (eventData) ->
       eventData: eventData
     }
   )
+
+  lg = LineGraphs.findOne({"player_name": "A"})
+
+  LineGraphs.update(
+    lg._id,
+    $set: {
+      data: new_data
+    }
+  )
   
   return
 
 Template.space.rendered = ->
   console.log("attaching events")
   initGame()
-  window.addEventListener('devicemotion', deviceMotionHandler, false);
+  window.addEventListener('devicemotion', deviceMotionHandler, false)
