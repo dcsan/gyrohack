@@ -2,23 +2,29 @@
 
   <div id="top">
       <div class="container">
-      <div class="row">
-        <h1 class = "toptitle">GyroTanks Arenas</h1>
-      </div>
+        <div class="row">
+          <a href = "http://localhost:3000/"><img src='/images/logo3.png' style = "display:inline;" class = "headerimage2">
+          <h1 class = "toptitle" style = "display:inline;">GyroTanks<span class = "subtext2"> Version 1.0</span></h1></a>
+        </div>
       </div>
   </div>
+
+<p class = "text">Choose an arena to join, up to 4 players per arena!</p>
+<br />
 
 <div class = "col-sm-4 col-sm-offset-4 col-xs-6 col-xs-offset-3 bottomspace">
   <a class="btn btn-red center-block c" href="/arena/1">Arena 1</a> 
   <br />
   <a class="btn btn-red center-block c" href="/arena/2">Arena 2</a>
+  <br />
+  <a class="btn btn-grey center-block" href="#">Settings</a>
 </div>
 
 <br />
 
 <div class = "container">
 <div class = "col-sm-10 col-xs-10 center-block">
-  <table>
+    <table>
   {{#each players}}
     <tr>
       <td>
@@ -46,30 +52,6 @@
   </table>
   </div>
 </div>
-
-
-<!-- <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
-
-    <div class="collapse navbar-collapse navbar-fixed-bottom" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">FAQ</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="http://alphagamejam.challengepost.com/">Alpha Game Hack 2014</a></li>      
-      </ul>
-    </div>
-  </div>
-</nav> -->
-
 
 
 
