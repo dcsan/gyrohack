@@ -17,6 +17,9 @@ Router.map ->
   @route "splash",
     path: "/splash"
 
+  @route "controls",
+    path: "/controls"
+
   @route "mobile",
     path: "/mobile"
 
