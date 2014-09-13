@@ -9,4 +9,5 @@ insecure
 iron:router
 coffeescript
 mizzao:bootstrap-3
+d3
 

@@ -13,8 +13,7 @@ deviceMotionHandler = (eventData) ->
   return unless player
 
   curEventTime = (new Date()).getTime()
-  if (curEventTime - lastEventTime) < 500
-    return
+  return if (curEventTime - lastEventTime) < 500
 
   lastEventTime = curEventTime
   console.log("curTime", curEventTime)
