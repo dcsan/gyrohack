@@ -1,11 +1,22 @@
-.player {
+.player-box {
   position: absolute;
   background-color: #F00;
 }
 
+.player-label {
+  position: relative;
+  left: 50px;
+  top: 50px;
+  color: blue;
+  background-color: rgba(0,0,0, 0.5);
+}
+
+.player-icon {
+  width: 100px;
+  border-radius: 50%;
+}
+
 .playerInfo {
-  position: fixed;
-  bottom: 100px;
   background-color: black;
   color: white;
 }

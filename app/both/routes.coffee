@@ -26,6 +26,7 @@ Router.map ->
       roomId = parseInt(@params.room)
       Meteor.subscribe("Players", {room: roomId })
     data: ->
+      playerCount: Players.find().count()
       players: Players.find()
 
 

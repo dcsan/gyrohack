@@ -1,15 +1,25 @@
 <template name="arena">
+
+  {{>NavBar}}
+
   <h1>Arena</h1>
 
-  <img id="p1" height='50px' class='player' src="/images/players/p1.png" />
-
   <div class="playerInfo">
-  playerCount: {{players.length}} <br>
+  playerCount: [ {{playerCount}} ]<br>
 
   {{#each players}}
-  <div>
-    name: {{name}}
-    room: {{room}}
+  <div class="player-box" id="player-{{name}}" style="top:{{top}}px; left:{{left}}px;">
+    <div class="player-label">
+      name: {{name}}
+    </div>
+
+    <img  
+      class='player-icon' 
+      id="tank-{{name}}"
+      style="transform: rotate({{rotate}}deg);"
+      src="/images/players/p{{pid}}.png"
+    />
+
   </div>
   {{/each}}
 
