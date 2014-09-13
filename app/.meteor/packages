@@ -9,4 +9,6 @@ insecure
 iron:router
 coffeescript
 mizzao:bootstrap-3
+sergeyt:d3
+sewdn:velocityjs
 
