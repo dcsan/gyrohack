@@ -35,12 +35,19 @@ Router.map ->
       Meteor.subscribe("Tanks", {room: parseInt(@params.room) })
     data: ->
       if @ready()
-        blob = {
+        @blob = {
           tankCount: Tanks.find().count()
           tanks: Tanks.find()
         }
-        Template.battle.initBattle(blob)
-        return blob
+        Template.battle.initBattle(@blob)
+        return @blob
+        
+    # onAfterAction: ->
+    #   @blob = {
+    #     tankCount: Tanks.find().count()
+    #     tanks: Tanks.find()
+    #   }
+
     onStop: ->
       Template.battle.exitRoom(@params.room)
 
