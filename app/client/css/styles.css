@@ -1,3 +1,108 @@
-.bigHeading {
-	font-size: 48px;
+
+@import url(http://fonts.googleapis.com/css?family=Arvo:400,700);
+
+
+
+h1, h2, h3, h4, h5, h6, p{
+	font-family: 'Arvo', serif;
+	font-weight: 400;
+}
+
+body{
+	background-color: #EEF0F0;
+}
+
+.headerimage{
+	height:95px;
+	width:100px;
+	display: inline;
+	vertical-align: middle;
+}
+
+.header{
+	height:100px;
+	margin-top: 13%;
+	margin-left:5%;
+	background-color: #EEF0F0;
+}
+
+.logo-title{
+	font-size:50px;
+	margin-left:10px;
+	color: #3c464f;
+	display: inline;
+	font-family: 'Arvo', serif;
+}
+
+.subtext {
+	font-size:20px;
+	color:#74AAAB;
+}
+
+.mainbody{
+	width: 95%;
+	margin-top: 2%;
+	margin-left:5%;
+}
+
+.text {
+	width: 700px;
+	line-height: 1.4;
+	font-size: 25px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    display: inline;
+    margin-right: 15px;
+}
+
+li > a {
+	color:#3c464f;
+	text-decoration: none;
+	font-family: 'Arvo', serif;
+	font-size: 20px;
+}
+
+.footer {
+	position:fixed;
+	bottom:5%;
+	margin-left: 5%;
+}
+
+.classname {
+	background-color:#74AAAB;
+	-webkit-border-top-left-radius:6px;
+	-moz-border-radius-topleft:6px;
+	border-top-left-radius:6px;
+	-webkit-border-top-right-radius:6px;
+	-moz-border-radius-topright:6px;
+	border-top-right-radius:6px;
+	-webkit-border-bottom-right-radius:6px;
+	-moz-border-radius-bottomright:6px;
+	border-bottom-right-radius:6px;
+	-webkit-border-bottom-left-radius:6px;
+	-moz-border-radius-bottomleft:6px;
+	border-bottom-left-radius:6px;
+	text-indent:0;
+	display:inline-block;
+	color:#fff;
+	font-style:normal;
+	height:50px;
+	line-height:50px;
+	width:250px;
+	text-decoration:none;
+	text-align:center;
+}
+.classname:hover {
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
+	background-color:#3D6666;
+}.classname:active {
+	position:relative;
+	top:1px;
 }
