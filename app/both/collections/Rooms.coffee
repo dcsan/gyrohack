@@ -6,6 +6,6 @@ Meteor.startup ->
     Rooms.remove({})
     Rooms.insert({
         name: "the room"
-        players: []
+        player_names: []  # a hash of player objects
         status: ""   # not started -> started -> ended
     })

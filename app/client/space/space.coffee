@@ -16,9 +16,9 @@ deviceMotionHandler = (eventData) ->
   return if (curEventTime - lastEventTime) < 500
 
   lastEventTime = curEventTime
-  console.log("curTime", curEventTime)
+  # console.log("curTime", curEventTime)
   
-  console.log("deviceMotionHandler", eventData)
+  # console.log("deviceMotionHandler", eventData)
   info = undefined
   xyz = "[X, Y, Z]"
 
@@ -43,7 +43,7 @@ deviceMotionHandler = (eventData) ->
   info = info.replace("Z", rotation.gamma)
   document.getElementById("moRotation").innerHTML = info
 
-  console.log(eventData.interval)
+  # console.log(eventData.interval)
 
   Players.update(
     player._id,
@@ -52,15 +52,12 @@ deviceMotionHandler = (eventData) ->
     }
   )
 
-  lg = LineGraphs.findOne({"player_name": "A"})
-  data = lg.data or []
-  sample = eventData.acceleration.x
-  data.push(sample)
+  room = Rooms.findOne({room_name: "the room"})
 
-  LineGraphs.update(
-    lg._id,
+  Rooms.update(
+    room._id,
     $set: {
-      data: data
+      status: "trigger a change event" 
     }
   )
   
@@ -80,6 +77,20 @@ enterRoom = (room) ->
   $(window).on 'resize', (e) -> resizeHandler
   window.addEventListener('devicemotion', deviceMotionHandler, false)
 
+  # find "the room" and join (only one room for now)
+  room = Rooms.findOne({name: "the room"})
+  window.room = room # debug
+
+  player_names = room.player_names or []
+  player_names.push player.name
+
+  Rooms.update(
+    room._id,
+    $set: {
+      player_names: player_names
+    }
+  )
+
   # $(window).on 'devicemotion', (e) -> deviceMotionHandler
   # window.addEventListener "deviceorientation", ( (event) ->
   #   deviceMotionHandler(event)
@@ -93,4 +104,16 @@ Template.space.exitRoom = (room) ->
 
   # $(window).off 'devicemotion'
 
+  room = Rooms.findOne({name: "the room"})
 
+  player_names = room.player_names or []
+
+  index_to_remove = player_names.indexOf(player.name)
+  player_names.splice(index_to_remove, 1)
+
+  Rooms.update(
+    room._id,
+    $set: {
+      player_names: player_names
+    }
+  )

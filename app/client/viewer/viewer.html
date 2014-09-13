@@ -1,34 +1,30 @@
 <template name="viewer">
 
-  <h2>Player: {{playerName}}</h2>
+  <h1> Viewer, RoomName = {{room.name}}</h1>
 
-  <div>
-    <p>
-      name: {{player.name}}
-    </p>
-    <p>
-      id: {{player._id}}
-    </p>
-  </div>
+  {{#each players}}
+    <h2>Player: {{this.name}}</h2>
+    <div>
+      <p>
+        name: {{this.name}}
+      </p>
+      <p>
+        id: {{this._id}}
+      </p>
+    </div>
 
-  <table>
-    <tr>
-      <td width=100>x</td>
-      <td width=100>y</td>
-      <td width=100>z</td>
-    </tr>
-    <tr>
-      <td>{{clip player.eventData.acceleration.x}}</td>
-      <td>{{clip player.eventData.acceleration.y}}</td>
-      <td>{{clip player.eventData.acceleration.z}}</td>
-    </tr>
-  </table>
-  
-  <div id="players">
-  </div>
-
-  {{#each room.players}}
-    <p>{{.}}</p>
+    <table>
+      <tr>
+        <td width=100>x</td>
+        <td width=100>y</td>
+        <td width=100>z</td>
+      </tr>
+      <tr>
+        <td>{{clip this.player.eventData.acceleration.x}}</td>
+        <td>{{clip this.player.eventData.acceleration.y}}</td>
+        <td>{{clip this.player.eventData.acceleration.z}}</td>
+      </tr>
+    </table>
   {{/each}}
 
 </template>

@@ -9,7 +9,10 @@ Template.viewer.clip = (v) ->
 Template.viewer.rendered = () ->
   this.autorun ->
     room = Rooms.findOne({name: "the room"})
-    # on user join
+    window.room = room # debug
+    players = []
+    for player_name in room.player_names
+        players.push Players.findOne({name: player_name})
     return
 
 Template.space.exitRoom = (room) ->
