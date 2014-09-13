@@ -3,9 +3,6 @@ lastEventTime = 0
 player = null
 
 initGame = () ->
-  Players.insert({
-    name: "A"
-  })
   player = Players.findOne({name:'A'})
   window.player = player
 
@@ -41,7 +38,9 @@ deviceMotionHandler = (eventData) ->
 
   Players.update(
     player._id,
-    eventData: eventData
+    $set: {
+      eventData: eventData
+    }
   )
   
   return

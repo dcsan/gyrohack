@@ -1,0 +1,22 @@
+<template name="viewer">
+
+  <h2>Player: {{playerName}}</h2>
+
+  <p>
+    id: {{player._id}}
+  </p>
+
+  <table>
+    <tr>
+      <td>x</td>
+      <td>y</td>
+      <td>z</td>
+    </tr>
+    <tr>
+      <td>{{clip player.eventData.acceleration.x}}</td>
+      <td>{{clip player.eventData.acceleration.y}}</td>
+      <td>{{clip player.eventData.acceleration.z}}</td>
+    </tr>
+  </table>
+
+</template>
