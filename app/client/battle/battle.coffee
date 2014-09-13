@@ -1,38 +1,40 @@
 moveEvent = null
 data = null
-
-@tank = new Tank
-
-window.tank = tank
+@Battle = {}
 
 handleKeys = (e) ->
-  # console.log("key", e)
+  tank = Battle.tanks[0]
+  console.log("@tank", tank)
   switch e.keyCode
     when 69
       console.log('edit')
       url = "/komikEditScene/#{data.params.chapter}/#{data.params.scene}"
       window.open(url, 'editor')
     when 39
-      @tank.rotate("right")
+      tank.rotate("right")
     when 37 # back
-      @tank.rotate("left")
+      tank.rotate("left")
     when 32
-      @tank.shoot()
+      tank.shoot()
     when 38
-      @tank.boost()
+      tank.boost()
     else
       console.log('unused key:', e.keyCode)
 
-Template.battle.rendered = ->
-  console.log("rendered")
-  enterRoom(this.data)
-
-enterRoom = (data) ->
-  console.log("enterRoom", data)
-  $(window).on 'keydown', (e) -> handleKeys(e)
+# Template.battle.rendered = ->
+#   console.log("enter battleId", this.data.room)
+#   enterRoom(this.data)
 
 # window events have to be removed manually when leaving page
 Template.battle.exitRoom = (room) ->
   console.log('player exitRoom', room)
   $(window).off 'keydown'
 
+Template.battle.initBattle = (data) ->
+  console.log("enterRoom")
+  window.data = data
+  tank1 = Tanks.findOne()
+  tank2 = data.tanks.fetch()[0]
+  console.log("tank1,2", tank1, tank2)
+  Battle.tanks = [tank1, tank2]
+  $(window).on 'keydown', (e) -> handleKeys(e)
