@@ -6,6 +6,8 @@ Router.configure
 Router.map ->
   @route "home",
     path: "/"
+    data: ->
+      players: Players.find().fetch()
 
   @route "lobby",
     path: "/lobby"
@@ -13,7 +15,7 @@ Router.map ->
   @route "space",
     path: "/space/:room?"
     data: ->
-      playerName = "A"
+      playerName = @params.room
       return {
         playerName: playerName
         player: Players.findOne({name: playerName})
@@ -24,7 +26,6 @@ Router.map ->
 
     onStop: ->
       Template.space.exitRoom(@params.room)
-
 
   @route "viewer",
     path: "/viewer/:playerName?"

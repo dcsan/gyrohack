@@ -2,6 +2,24 @@
 
 <h1>Home</h1>
 
-hi there
+  <table>
+  {{#each players}}
+    <tr>
+      <td>
+        <span class="btn btn-large btn-primary">
+          Player {{this.name}}
+        </span>
+      </td>
+      <td>
+        <a class="btn btn-large btn-default" 
+          href="/viewer/{{this.name}}">viewer</a>
+      </td>
+      <td>
+        <a class="btn btn-large btn-default" 
+          href="/space/{{this.name}}">space</a>
+      </td>
+    </tr>
+  {{/each}}
+  </table>
 
 </template>
