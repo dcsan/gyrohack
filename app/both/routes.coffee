@@ -19,6 +19,13 @@ Router.map ->
         player: Players.findOne({name: playerName})
       }
 
+    # onRun: ->
+    #   Template.space.enterRoom(@params.room)
+
+    onStop: ->
+      Template.space.exitRoom(@params.room)
+
+
   @route "viewer",
     path: "/viewer/:playerName?"
     data: ->

@@ -6,7 +6,11 @@ initGame = () ->
   player = Players.findOne({name:'A'})
   window.player = player
 
+resizeHandler = (evt) ->
+  console.log("resizeHandler", evt)
+
 deviceMotionHandler = (eventData) ->
+  console.log("deviceMotionHandler", eventData)
   info = undefined
   xyz = "[X, Y, Z]"
 
@@ -60,6 +64,26 @@ deviceMotionHandler = (eventData) ->
   return
 
 Template.space.rendered = ->
-  console.log("attaching events")
   initGame()
+  enterRoom()
+
+moveEvent = null
+
+enterRoom = (room) ->
+  console.log("enterRoom", room)
+  $(window).on 'resize', (e) -> resizeHandler
+  # $(window).on 'devicemotion', (e) -> deviceMotionHandler
   window.addEventListener('devicemotion', deviceMotionHandler, false)
+  # window.addEventListener "deviceorientation", ( (event) ->
+  #   deviceMotionHandler(event)
+  # ), false
+
+
+# window events have to be removed manually when leaving page
+Template.space.exitRoom = (room) ->
+  console.log('exitRoom', room)
+  window.removeEventListener('devicemotion', deviceMotionHandler, false);
+
+  # $(window).off 'devicemotion'
+
+
