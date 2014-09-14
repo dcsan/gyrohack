@@ -1,8 +1,11 @@
-<template name="battle">
+<template name="battle" class="mainarena">
   <h1>battle</h1>
 
   <div id="msg">ready</div>
-
+  <img  
+      id='battle_map'     
+      src="/images/map.png"
+    />
   {{#each tanks}}
   <div  class="tank-box" 
         id="tank-{{name}}" 
@@ -22,7 +25,7 @@
       id="tank-{{name}}"
       src="/images/players/tank{{pid}}.png"
     />
-    
+
 
   </div>
   {{/each}}

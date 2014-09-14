@@ -41,11 +41,16 @@ Router.map ->
   @route "player_lobby",
     path: "/player_lobby"
     waitOn: ->
-      roomId = parseInt(@params.room)
-      Meteor.subscribe("Players", {} )
+      # roomId = parseInt(@params.room)
+      [
+        Meteor.subscribe("Tanks", {} ),
+        Meteor.subscribe("Battles", {} )
+      ]
+
     data: ->
-      playerCount: Players.find().count()
-      players: Players.find()
+      # playerCount: Players.find().count()
+      tanks: Tanks.find()
+      # players: Players.find()
 
   @route "arena",
     path: "/arena/:room"

@@ -43,7 +43,7 @@ Meteor.startup ->
       {
         name: "Annie"
         room: 1
-        pid: 1
+        idx: 1
         top: 300
         left: 100
         rotate: 0
@@ -51,25 +51,21 @@ Meteor.startup ->
       {
         name: "Bob"
         room: 1
-        pid: 2
+        idx: 2
         top: 200
         left: 200
         rotate: 0
       }
       {
         name: "Chuck"
-        room: 1
-        pid: 3
-        top: 300
-        left: 500
+        room: 2
+        idx: 3
         rotate: 0
       }
       {
         name: "Dan"
-        room: 1
-        pid: 4
-        top: 250
-        left: 350
+        room: 2
+        idx: 4
         rotate: 0
       }
 
