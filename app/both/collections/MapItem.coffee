@@ -33,6 +33,7 @@ MapItems.helpers
     @msg("delete mapItem #{@_id}")
     MapItems.remove({_id: @_id})
 
+  #FIXME - use realtime not ticks
   tick: () ->
     @age = @age+1
     if @age % 10 == 0
@@ -76,7 +77,7 @@ MapItems.updateAll = (data) ->
           # console.log("updateAll", items)
 
         if tank.collide(item)
-          item.deleteMe()
           tank.getItem(item)
+          item.deleteMe()
 
   # console.log("items:", mapItems.count() )
