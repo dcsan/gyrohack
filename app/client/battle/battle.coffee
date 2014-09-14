@@ -53,28 +53,30 @@ Template.battle.initBattle = (data) ->
   battle.setProps({"w":w, "h":h})
 
   $(window).on 'keydown', (e) -> handleKeys(e)
-  update = () ->
-    # update tanks positions
-    for tank in battle.tanks
-      if tank.boosting
-        console.log("executing boosting")
-          #curAngle = tank.angle or Math.PI / 2
-          #console.log("angle ", curAngle) # debug
-  
-          #deltaX = Math.sin(curAngle)
-          #deltaY = Math.cos(curAngle)
-  
-          #t = tank.top + (deltaX * 5)
-          #l = tank.left + (deltaY * 5)
-  
-          #console.log("left ", l) # debug
-          #console.log("top ", t) # debug
-  
-          #tank.setProps({"left": l, "top": t})
-  
+
   if Meteor.isClient
     theLoop = Meteor.setInterval(update, 50)
   hasRun = true
+
+update = () ->
+  MapItems.updateAll(window.data)
+  tanks = Tanks.find({battleId: window.data.battleId}).fetch()
+  _.each tanks, (tank) ->
+    if tank.boosting
+      console.log("executing boosting")
+        #curAngle = tank.angle or Math.PI / 2
+        #console.log("angle ", curAngle) # debug
+
+        #deltaX = Math.sin(curAngle)
+        #deltaY = Math.cos(curAngle)
+
+        #t = tank.top + (deltaX * 5)
+        #l = tank.left + (deltaY * 5)
+
+        #console.log("left ", l) # debug
+        #console.log("top ", t) # debug
+
+        #tank.setProps({"left": l, "top": t})
 
 
 clickTank = (e) ->
