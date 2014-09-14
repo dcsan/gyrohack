@@ -51,14 +51,27 @@ MapItems.reset = () ->
 MapItems.create = (obj) ->
   obj.state = "new"
   obj.age = 0
+  switch obj.type
+    when "gold"
+      obj.score = 100
+    else
+      obj.score = 100  # default
+
   res = MapItems.insert(obj)
   return res
 
 MapItems.updateAll = (data) ->
   mapItems = MapItems.find({battleId: data.battleId }).fetch()
+  tanks = Tanks.find({battleId: battleId})
   _.each mapItems, (item) ->
     # console.log("tick", item)
     kill = item.tick()
     if (kill)
       item.deleteMe()
+    else
+      _.each tanks, (tank) ->
+        if tank.collide(item)
+          item.deleteMe()
+          tank.score(item.score)
+
   # console.log("items:", mapItems.count() )

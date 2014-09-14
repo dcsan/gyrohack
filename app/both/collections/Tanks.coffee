@@ -76,6 +76,9 @@ Tanks.helpers
     # tell Battle to handle the bullet
     @msg("shoot #{vec}")
 
+  collide: (item) ->
+    return false
+
 
 Tanks.reset = () ->
   console.log("Tanks.reset")
