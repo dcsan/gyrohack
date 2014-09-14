@@ -9,11 +9,15 @@
 
 .tank-label {
   position: relative;
-  left: 50px;
-  top: 50px;
+  left: 0px;
+  top: 150px;
   color: white;
+  width: 80%;
   background-color: rgba(0,0,0, 0.5);
   z-index: 100;
+  text-align: center;
+  margin: 10%;
+  border-radius: 10px;
 }
 
 .tank-icon {

@@ -5,9 +5,10 @@
 
 .player-label {
   position: relative;
-  left: 50px;
-  top: 50px;
-  color: blue;
+  left: 80px;
+  top: 100px;
+  color: white;
+  width: 100px;
   background-color: rgba(0,0,0, 0.5);
 }
 
