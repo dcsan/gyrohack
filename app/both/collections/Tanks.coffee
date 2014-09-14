@@ -38,7 +38,7 @@ Tanks.helpers
   
   doBoost: () ->
     curAngle = @angle or Math.PI / 2 # default to rotation 0
-    console.log("angle ", @angle) # debug
+    #console.log("angle ", @angle) # debug
 
     deltaX = Math.sin(curAngle)
     deltaY = Math.cos(curAngle)
@@ -85,12 +85,14 @@ Tanks.reset = () ->
     }
     Tanks.insert tank
 
-Tanks.updateAll = (tanks) ->
-  _.each tanks (tank) ->
-    if tank.boostring
-      console.log("executing boosting")
+Tanks.updateAll = (battleId) ->
+  # find the tanks 
+  tanks = Tanks.find({battleId: battleId}).fetch()
+
+  # update those are moving
+  _.each tanks, (tank) ->
+    if tank.boosting
       curAngle = tank.angle or Math.PI / 2
-      console.log("angle ", curAngle) # debug
 
       deltaX = Math.sin(curAngle)
       deltaY = Math.cos(curAngle)
@@ -98,9 +100,5 @@ Tanks.updateAll = (tanks) ->
       t = tank.top + (deltaX * 5)
       l = tank.left + (deltaY * 5)
 
-      console.log("left ", l) # debug
-      console.log("top ", t) # debug
-
       tank.setProps({"left": l, "top": t})
-
 
