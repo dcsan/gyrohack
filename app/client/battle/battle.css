@@ -10,7 +10,7 @@
 .tank-label {
   position: relative;
   left: 0px;
-  top: 150px;
+  top: 75px;
   color: white;
   width: 80%;
   background-color: rgba(0,0,0, 0.5);
@@ -59,7 +59,6 @@
 
 .map-item-gold {
   position: absolute;
-  background-color: yellow;
   z-index: 100;
   width: 100px;
   height: 100px;  

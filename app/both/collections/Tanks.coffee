@@ -83,6 +83,11 @@ Tanks.helpers
 
     return false
 
+  getItem: (item) ->
+    score = @score or 0
+    @setProps({
+      score: score + (item.score or 1)
+    })
 
 Tanks.reset = () ->
   console.log("Tanks.reset")
