@@ -1,6 +1,6 @@
 <template name="battle_lobby">
 
-<h1>Choose a battle to watch!</h1>
+<h1>Choose a battle</h1>
 
 <ul>
 {{#each battles}}
@@ -9,6 +9,7 @@
       bid="{{this.bid}}" >
       {{this.bid}} {{this.name}}
     </button>
+    players: {{this.playerCount}}
   </li>
   
 {{/each}}

@@ -1,5 +1,10 @@
 <template name="player_lobby">
 
+  <a 
+    class="btn btn-red center-block c" 
+    href="/battle/{{sessGet 'bid'}}">Spectator mode!
+  </a> 
+
   <div id="top">
       <div class="container">
         <div class="row">
@@ -26,6 +31,12 @@
 
     {{/each}}
   </div>
+
+
+  <a 
+    class="btn btn-red center-block c" 
+    href="/battle_lobby">back to battle lobby
+  </a> 
   
 </template>
 
