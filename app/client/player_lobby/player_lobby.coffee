@@ -7,7 +7,7 @@ pickTank = (e) ->
 
   battleId = Session.get("battleId")
   battleId = parseInt(battleId)
-  battle = Battles.findOne( {bid:battleId} )
+  battle = Battles.findOne({ battleId:battleId })
   tank = Tanks.findOne({idx: tid})
   battle.addTank(tank)
   tank.joinRoom(battle)

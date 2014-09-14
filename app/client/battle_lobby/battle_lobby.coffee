@@ -1,5 +1,5 @@
 pickBattle = (e) ->
-  idx = $(e.target).attr("bid")
+  idx = $(e.target).attr("battleId")
   Session.set("battleId", idx)
   Router.go("/player_lobby")
 

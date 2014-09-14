@@ -1,33 +1,78 @@
 <template name="admin">
 
-<ol>
-  <li>
-    <a href="/splash">splash</a>
-  </li>
-  <li>
-    <a href="/">home</a>
-  </li>
-</ol>
+<div class = "container">
+
+  <ol>
+    <li>
+      <a href="/splash">splash</a>
+    </li>
+    <li>
+      <a href="/">home</a>
+    </li>
+  </ol>
+
+  <h2>battles</h2>
+  <ol>
+    <li>
+      <a href="/battle_lobby">battle_lobby</a>
+    </li>
+    <li>
+      <a href="/battle/1">battle/1</a>
+    </li>
+  </ol>
+
+  <h2>players</h2>
+  <ol>
+    <li>
+      <a href="/player_lobby">player_lobby</a>    
+    </li>
+    <li>
+      <a href="/player_remote/1">player_remote/1</a>
+    </li>
+  </ol>
+
+  <h2>data</h2>
+  <ul>
+    <li>
+      <a href="/reset">reset data</a>
+    </li>
+  </ul>
 
 
-<h2>battles</h2>
-<ol>
-  <li>
-    <a href="/battle_lobby">battle_lobby</a>
-  </li>
-  <li>
-    <a href="/battle/1">battle/1</a>
-  </li>
-</ol>
 
-<h2>players</h2>
-<ol>
-  <li>
-    <a href="/player_lobby">player_lobby</a>    
-  </li>
-  <li>
-    <a href="/player_remote/1">player_remote/1</a>
-  </li>
-</ol>
+  <div class = "col-sm-10 col-xs-10 center-block">
+      <table>
+    {{#each tanks}}
+      <tr>
+        <td>
+          <span class="btn btn-large btn-primary">
+            Player {{this.name}}
+          </span>
+        </td>
+
+        <td>
+          <span class="btn btn-large btn-primary">
+            Room {{this.room}}
+          </span>
+        </td>
+
+        <td>
+          <a class="btn btn-large btn-default" 
+            href="/viewer/{{this.name}}">viewer(not working)</a>
+        </td>
+        <td>
+          <a class="btn btn-large btn-default" 
+            href="/space/{{this.pid}}">space</a>
+        </td>
+      </tr>
+    {{/each}}
+    </table>
+    <br/>
+    <a class="btn btn-large btn-default" href="/battle/1">battle/1</a>
+  <br />
+  </div>
+
+</div>
+
 
 </template>

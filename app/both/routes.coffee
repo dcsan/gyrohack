@@ -11,23 +11,9 @@ Router.map ->
     data: ->
       tanks: Tanks.find().fetch()
 
-  @route "lobby",
-    path: "/lobby"
-
   @route "splash",
     path: "/splash"
     layoutTemplate: "splash"
-
-  @route "controls",
-    path: "/controls"
-    layoutTemplate: "controls"
-
-  @route "remote",
-    path: "/remote"
-    layoutTemplate: "remote"
-
-  @route "mobile",
-    path: "/mobile"
 
   @route "battle_lobby",
     path: "/battle_lobby"
@@ -35,7 +21,7 @@ Router.map ->
       Meteor.subscribe("Battles", {} )
     data: ->
       battleCount: Battles.find().count()
-      battles: Battles.find({}, {sort: {bid:1}})
+      battles: Battles.find({}, {sort: {battleId:1}})
 
 
   @route "player_lobby",
@@ -54,16 +40,15 @@ Router.map ->
     path: "/battle/:battleId"
     waitOn: ->
       [
-        Meteor.subscribe("Tanks", {room: parseInt(@params.room) }),
-        Meteor.subscribe("Battles", {bid: parseInt(@params.room) }),
-        Meteor.subscribe("Bullets", {bid: parseInt(@params.room) })
+        Meteor.subscribe("Battles", {battleId: parseInt(@params.battleId) })
+        Meteor.subscribe("Tanks", {battleId: parseInt(@params.battleId) })
       ]
     data: ->
       if @ready()
         @blob = {
           tankCount: Tanks.find().count()
           tanks: Tanks.find({battleId: parseInt(@params.battleId)})
-          battle: Battles.find({bid: @params.bid})
+          battle: Battles.findOne({battleId: parseInt(@params.battleId) })
         }
         Template.battle.initBattle(@blob)
         return @blob
@@ -80,24 +65,25 @@ Router.map ->
   @route "player_remote",
     path: "/player_remote/:tankId"
     waitOn: ->
-      Meteor.subscribe("Tanks", {room: parseInt(@params.tankId) })
+      [
+        # fixme - just current players battle?
+        Meteor.subscribe("Tanks", {} ),
+        Meteor.subscribe("Battles", {} )
+      ]
     data: ->
       if @ready()
         tankId = parseInt(@params.tankId) # not using players for now
+        tank = Tanks.findOne({idx: tankId})
+        battle = Battles.findOne({battleId:tank.battleId})
         @blob = {
           tankId: tankId
-          tank: Tanks.findOne({pid: tankId})
+          tank: tank
+          battle: battle
         }
         Template.player_remote.initSpace(@blob)
         return @blob
     onStop: ->
       Template.player_remote.exitRoom(@params.tankId)
-
-  @route "viewer",
-    path: "/viewer/:playerName?"
-    data: ->
-      playerName: @params.playerName
-      player: Players.findOne({name: @params.playerName})
 
   @route "about",
     path: "/about"

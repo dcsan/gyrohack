@@ -8,15 +8,15 @@ handleKeys = (e) ->
   
   # console.log("@tank", tank)
   switch e.keyCode
-    when 39 #right
+    when 39, 68 #right
       tank.doRotate(1)
-    when 37 # left
+    when 37, 65 # left
       tank.doRotate(-1)
-    when 40 #up
+    when 40, 87 #up
       tank.doBoost(1)
-    when 38 #down
+    when 38, 83 #down
       tank.doBoost(-1)
-    when 32
+    when 32, 13
       tank.doShoot(-1)
     else
       console.log('unused key:', e.keyCode)
@@ -33,7 +33,7 @@ Template.battle.exitRoom = (room) ->
 
 Template.battle.initBattle = (data) ->
   return if hasRun
-  console.log("initBattle")
+  console.log("initBattle", data)
   window.data = data # debug
   tanks = data.tanks.fetch()
   console.log("tankCount", tanks.length)
@@ -49,6 +49,12 @@ Template.battle.initBattle = (data) ->
 clickTank = (e) ->
   console.log("clicked", e.target.id)
 
+clickMap = (e) ->
+  battle.addItem(e)
+
 Template.battle.events =
   "click .tank-icon": (e) ->
     clickTank(e)
+
+  "click #battle_map": (e) ->
+    clickMap(e)

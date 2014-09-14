@@ -192,3 +192,9 @@ overflow: hidden;
 	max-height: 80%;
 }
 
+.btn-huge {
+  height: 100px;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
