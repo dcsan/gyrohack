@@ -82,8 +82,8 @@ Battles.helpers
     item = MapItems.create({
       battleId: this.battleId
       type: "gold"
-      top: evt.pageY
-      left: evt.pageX
+      top: evt.pageY - 50
+      left: evt.pageX - 50
     })
     @msg("addItem", item)
     # loot = @items.push(item)
