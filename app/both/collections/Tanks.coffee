@@ -31,14 +31,38 @@ Tanks.helpers
     $("#msg").text(txt)
   
   doBoost: (vel) ->
-    t = @top + (vel * BOOST_SPEED)
-    @setProps(top: t)
-    @msg("top #{@top}")
+    curAngle = @angle or Math.PI / 2 # default to rotation 0
+    console.log("angle ", @angle)
 
-  doRotate: (deg) ->
-    v = @rotate + (deg * ROTATE_SPEED)
-    @setProps(rotate: v)
+    deltaX = Math.sin(curAngle)
+    deltaY = Math.cos(curAngle)
+
+    t = @top + (deltaX * BOOST_SPEED)
+    l = @left + (deltaY * BOOST_SPEED)
+
+    @setProps(top: t)
+    @setProps(left: l)
+
+    @msg("top #{@top}")
+    @msg("left #{@left}")
+
+  doRotate: (deltaRad) ->
+    @angle ?= Math.PI / 2
+    angle = @angle + deltaRad
+
+    rotate = angle
+    console.log("delta ", deltaRad)
+    console.log("cur angle ", angle)
+    console.log("cur rotate ", rotate)
+    @setProps(rotate: rotate)
+    @setProps(angle: angle)
     @msg("rotate #{@rotate}")
 
   doShoot: (vec) ->
+    # tell Battle to handle the bullet
+    
     @msg("shoot #{vec}")
+
+
+
+

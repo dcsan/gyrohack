@@ -9,6 +9,6 @@ Template.viewer.clip = (v) ->
 Template.viewer.rendered = () ->
   return
 
-Template.space.exitRoom = (room) ->
+Template.player_remote.exitRoom = (room) ->
   console.log('viewer exitRoom', room)
 

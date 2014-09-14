@@ -54,20 +54,20 @@ deviceMotionHandler = (eventData) ->
 
   # console.log(eventData.interval)
 
-  if ave > 0
-    # rotate left
-    rotate = -1 * ave * ROTATE_K
-  else
-    # rotate right
-    ave = Math.abs(ave)
-    rotate = ave * ROTATE_K
+  if Math.abs(ave) > 1
+    if ave > 0
+      # rotate left
+      deltaRad = -1 * 2 * 0.06981317007977318
+    else
+      # rotate right
+      ave = Math.abs(ave)
+      deltaRad = +1 * 2 * 0.06981317007977318
+    # console.log("rotate updated to: " + rotate)
+    tank.doRotate(deltaRad)
 
-  # console.log("rotate updated to: " + rotate)
-
-  tank.doRotate(rotate)
   return
 
-Template.space.initSpace = (data) ->
+Template.player_remote.initSpace = (data) ->
   return if TankInit.hasRun
   TankInit.hasRun = true
   
@@ -76,10 +76,10 @@ Template.space.initSpace = (data) ->
   gamma_buffer = []
 
   window.addEventListener('devicemotion', deviceMotionHandler, false)
-  console.log("init space ", data)
+  console.log("init player_remote ", data)
 
 # window events have to be removed manually when leaving page
-Template.space.exitRoom = (room) ->
+Template.player_remote.exitRoom = (room) ->
   console.log('player exitRoom', room)
   window.removeEventListener('devicemotion', deviceMotionHandler, false)
   TankInit.hasRun = false
@@ -93,7 +93,7 @@ clickShoot = (e) ->
   tank.doShoot(-1)
   console.log("clicked shoot", e.target.id)
 
-Template.space.events =
+Template.player_remote.events =
   "click #move": (e) ->
     clickMove(e)
 

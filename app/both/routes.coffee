@@ -33,15 +33,6 @@ Router.map ->
       playerCount: Players.find().count()
       players: Players.find()
 
-  @route "player_remote",
-    path: "/player_remote/:tankId"
-    waitOn: ->
-      tankId = parseInt(@params.tankId)
-      Meteor.subscribe("Tanks", {pid: tankId} )
-    data: ->
-      tank: Tanks.findOne()
-
-
   @route "arena",
     path: "/arena/:room"
     waitOn: ->
@@ -73,8 +64,8 @@ Router.map ->
     onStop: ->
       Template.battle.exitRoom(@params.room)
 
-  @route "space",
-    path: "/space/:tankId"
+  @route "player_remote",
+    path: "/player_remote/:tankId"
     waitOn: ->
       Meteor.subscribe("Tanks", {room: parseInt(@params.tankId) })
     data: ->
@@ -84,10 +75,10 @@ Router.map ->
           tankId: tankId
           tank: Tanks.findOne({pid: tankId})
         }
-        Template.space.initSpace(@blob)
+        Template.player_remote.initSpace(@blob)
         return @blob
     onStop: ->
-      Template.space.exitRoom(@params.tankId)
+      Template.player_remote.exitRoom(@params.tankId)
 
   @route "viewer",
     path: "/viewer/:playerName?"

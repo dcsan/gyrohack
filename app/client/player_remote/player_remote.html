@@ -1,24 +1,79 @@
 <template name="player_remote">
 
+  <h1>Player Remote</h1>
+
   {{#with tank}}
-
-  <div  class="tank-box" 
-        id="tank-{{name}}" 
-        style="top:{{top}}px; left:{{left}}px;">
-        
-    <div class="tank-label">
-      {{name}}
-    </div>
-
-    <img  
-      class='tank-icon' 
+  
+  <div  class="tank-box"
       id="tank-{{name}}"
-      style="transform: rotate({{rotate}}deg);"
+      style="top:{{top}}px; left:{{left}}px;">
+  
+      <div class="tank-label">
+          {{name}}
+      </div>
+  
+      <img
+      class='tank-icon'
+      id="tank-{{name}}"
+      style="transform: rotate({{rotate}}rad);"
       src="/images/players/tank{{pid}}.png"
-    />
-
+      />
+  
+  </div>
+  
+  {{/with}}
+ 
+  <div>
+    <p>
+      name: {{tank.name}}
+    </p>
+    <p>
+      id: {{tank._id}}
+    </p>
   </div>
 
-  {{/with}}
+  <table>
+      <tr>
+        <td>top</td>
+        <td>left</td>
+        <td>rotate</td>
+      </tr>
+      <tr>
+        <td>{{tank.top}}</td>
+        <td>{{tank.left}}</td>
+        <td>{{tank.rotate}}</td>
+      </tr>
+  </table>
+
+  <div class="main">
+    <h2>Device Motion</h2>
+    <table>
+      <tr>
+        <td>Event Supported</td>
+        <td id="dmEvent"></td>
+      </tr>
+      <tr>
+        <td>acceleration</td>
+        <td id="moAccel"></td>
+      </tr>
+      <tr>
+        <td>accelerationIncludingGravity</td>
+        <td id="moAccelGrav"></td>
+      </tr>
+      <tr>
+        <td>rotationRate</td>
+        <td id="moRotation"></td>
+      </tr>
+      <tr>
+        <td>Debug Display</td>
+        <td id="debug"></td>
+      </tr>
+    </table>
+  </div>
+
+  <a id="shoot" class="btn btn-large btn-default" href="#">Shoot</a>
+  <a id="move" class="btn btn-large btn-default" href="#">Move</a>
+
+
 
 </template>
