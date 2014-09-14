@@ -23,6 +23,25 @@ Router.map ->
   @route "mobile",
     path: "/mobile"
 
+
+  @route "player_lobby",
+    path: "/player_lobby"
+    waitOn: ->
+      roomId = parseInt(@params.room)
+      Meteor.subscribe("Players", {} )
+    data: ->
+      playerCount: Players.find().count()
+      players: Players.find()
+
+  @route "player_remote",
+    path: "/player_remote/:tankId"
+    waitOn: ->
+      tankId = parseInt(@params.tankId)
+      Meteor.subscribe("Tanks", {pid: tankId} )
+    data: ->
+      tank: Tanks.findOne()
+
+
   @route "arena",
     path: "/arena/:room"
     waitOn: ->

@@ -1,9 +1,7 @@
-<template name="battle">
-  <h1>battle</h1>
+<template name="player_remote">
 
-  <div id="msg">ready</div>
+  {{#with tank}}
 
-  {{#each tanks}}
   <div  class="tank-box" 
         id="tank-{{name}}" 
         style="top:{{top}}px; left:{{left}}px;">
@@ -20,6 +18,7 @@
     />
 
   </div>
-  {{/each}}
+
+  {{/with}}
 
 </template>

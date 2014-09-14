@@ -1,0 +1,28 @@
+<template name="player_lobby">
+
+  <h1>Choose your Tank!</h1>
+
+  <div class="player-lobby-list">
+    {{#each players}}
+    <div 
+      class="player-list-box" 
+      id="player-{{name}}" >
+      <div class="player-label">
+        name: {{name}}
+      </div>
+
+      <img  
+        class='player-icon' 
+        id="tank-{{name}}"
+        src="/images/players/tank{{pid}}.png"
+        style="transform: rotate({{rotate}}deg);"
+      />
+      <button tankid="{{pid}}" class="tankPick btn btn-large">
+        Pick me!
+      </button>
+    </div>
+
+    {{/each}}
+  </div>
+  
+</template>
