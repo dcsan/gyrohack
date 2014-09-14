@@ -71,23 +71,19 @@ Tanks.helpers
 
   doShoot: (vec, battle) ->
     # tell Battle to handle the bullet
-    
     @msg("shoot #{vec}")
 
 
-
-Meteor.startup ->
-  if Meteor.isServer
-
-    Tanks.remove({})
-    names = ["red", "blue", "green", "yellow" ]
-
-    idx = 1
-    _.each names, (name) ->
-      tank = {
-        idx: idx++
-        name: name
-      }
-      Tanks.insert tank
+Tanks.reset = () ->
+  console.log("Tanks.reset")
+  Tanks.remove({})
+  names = ["red", "blue", "green", "yellow" ]
+  idx = 1
+  _.each names, (name) ->
+    tank = {
+      idx: idx++
+      name: name
+    }
+    Tanks.insert tank
 
 

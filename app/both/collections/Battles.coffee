@@ -17,6 +17,35 @@ if Meteor.isServer
     remove: () ->
       return true
 
+
+Battles.reset = () ->
+  console.log("Battles.reset")
+  Battles.remove({})
+  battles = [
+    {
+      name: "room1"
+      bid: 1
+    }
+    {
+      name: "room2"
+      bid: 2
+    }
+    {
+      name: "room3"
+      bid: 3
+    }
+    {
+      name: "room4"
+      bid: 4
+    }
+  ]
+
+  _.each battles, (p) ->
+    p.players = []
+    p.tanks = []
+    Battles.insert p
+
+##-------------  helpers
 Battles.helpers
 
   setProps: (props) ->
@@ -41,44 +70,4 @@ Battles.helpers
     @tanks.push(tank._id)
     @setProps(tanks: @tanks) # save it
 
-
-
-
-if Meteor.isServer
-  Meteor.startup ->
-
-    Battles.remove({})
-
-    battles = [
-      {
-        name: "room1"
-        bid: 1
-        bullets: []
-        tanks: []
-      }
-      {
-        name: "room2"
-        bid: 2
-        bullets: []
-        tanks: []
-      }
-      {
-        name: "room3"
-        bid: 3
-        bullets: []
-        tanks: []
-      }
-      {
-        name: "room4"
-        bid: 4
-        bullets: []
-        tanks: []
-      }
-
-    ]
-
-    _.each battles, (p) ->
-      p.players = []
-      p.tanks = []
-      Battles.insert p
 
