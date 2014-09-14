@@ -129,9 +129,9 @@ Tanks.updateAll = (battleId, battle) ->
       t = tank.top + (deltaX * 5)
       l = tank.left + (deltaY * 5)
 
-      #top_left = boundingBoxCheck(t, l, battle.h, battle.w)
+      top_left = boundingBoxCheck(t, l, battle.h, battle.w)
 
-      tank.setProps({"left": l, "top": t})
+      tank.setProps({"left": top_left.left, "top": top_left.top})
 
 
 boundingBoxCheck = (top, left, h, w) ->

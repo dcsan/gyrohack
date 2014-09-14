@@ -1,5 +1,5 @@
 TANK_SIZE = 100
-OFFSET = 20
+OFFSET = 100
 pickTank = (e) ->
   # debugger;
   tid = $(e.target).attr("tankid")
