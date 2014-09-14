@@ -29,7 +29,7 @@ Tanks.helpers
 
   joinRoom: (battle) ->
     @setProps({
-      battleId: battle.bid
+      battleId: battle.battleId
     })
 
   msg: (txt) ->

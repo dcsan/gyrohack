@@ -21,7 +21,7 @@ Router.map ->
       Meteor.subscribe("Battles", {} )
     data: ->
       battleCount: Battles.find().count()
-      battles: Battles.find({}, {sort: {bid:1}})
+      battles: Battles.find({}, {sort: {battleId:1}})
 
 
   @route "player_lobby",
@@ -40,15 +40,15 @@ Router.map ->
     path: "/battle/:battleId"
     waitOn: ->
       [
-        Meteor.subscribe("Tanks", {battleId: parseInt(@params.battleId) }),
-        Meteor.subscribe("Battles", {bid: parseInt(@params.battleId) })
+        Meteor.subscribe("Battles", {battleId: parseInt(@params.battleId) })
+        Meteor.subscribe("Tanks", {battleId: parseInt(@params.battleId) })
       ]
     data: ->
       if @ready()
         @blob = {
           tankCount: Tanks.find().count()
           tanks: Tanks.find({battleId: parseInt(@params.battleId)})
-          battle: Battles.find({bid: @params.bid})
+          battle: Battles.findOne({battleId: parseInt(@params.battleId) })
         }
         Template.battle.initBattle(@blob)
         return @blob
@@ -74,7 +74,7 @@ Router.map ->
       if @ready()
         tankId = parseInt(@params.tankId) # not using players for now
         tank = Tanks.findOne({idx: tankId})
-        battle = Battles.findOne({bid:tank.battleId})
+        battle = Battles.findOne({battleId:tank.battleId})
         @blob = {
           tankId: tankId
           tank: tank

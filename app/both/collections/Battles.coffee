@@ -24,25 +24,26 @@ Battles.reset = () ->
   battles = [
     {
       name: "room1"
-      bid: 1
+      battleId: 1
     }
     {
       name: "room2"
-      bid: 2
+      battleId: 2
     }
     {
       name: "room3"
-      bid: 3
+      battleId: 3
     }
     {
       name: "room4"
-      bid: 4
+      battleId: 4
     }
   ]
 
   _.each battles, (p) ->
     p.players = []
     p.tanks = []
+    p.items = []
     Battles.insert p
 
 ##-------------  helpers
@@ -66,13 +67,21 @@ Battles.helpers
     return @tanks.length
 
   addTank: (tank) ->
-    console.log("battle.addTank #{tank._id} to battle #{@bid}")
+    console.log("battle.addTank #{tank._id} to battle #{@battleId}")
     @tanks.push(tank._id)
     @setProps(tanks: @tanks) # save it
 
   removeTank: (tank) ->
-    console.log("battle.removeTank tank #{tank._id} to battle #{@bid}")
+    console.log("battle.removeTank tank #{tank._id} to battle #{@battleId}")
     tanks = _.reject @tanks, (tankId) -> tankId == tank._id
     @setProps(tanks: tanks)
+
+  addItem: (evt) ->
+    item = new MapItem('gold')
+    loot = @items.push(item)
+    console.log('addItem', item)
+    # @setProps(lootItems: loot)
+
+
 
 

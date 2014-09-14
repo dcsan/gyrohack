@@ -33,7 +33,7 @@ Template.battle.exitRoom = (room) ->
 
 Template.battle.initBattle = (data) ->
   return if hasRun
-  console.log("initBattle")
+  console.log("initBattle", data)
   window.data = data # debug
   tanks = data.tanks.fetch()
   console.log("tankCount", tanks.length)
@@ -49,6 +49,12 @@ Template.battle.initBattle = (data) ->
 clickTank = (e) ->
   console.log("clicked", e.target.id)
 
+clickMap = (e) ->
+  battle.addItem(e)
+
 Template.battle.events =
   "click .tank-icon": (e) ->
     clickTank(e)
+
+  "click #battle_map": (e) ->
+    clickMap(e)
