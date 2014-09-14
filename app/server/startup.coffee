@@ -58,14 +58,18 @@ Meteor.startup ->
       }
       {
         name: "Chuck"
-        room: 2
+        room: 1
         pid: 3
+        top: 300
+        left: 500
         rotate: 0
       }
       {
         name: "Dan"
-        room: 2
+        room: 1
         pid: 4
+        top: 250
+        left: 350
         rotate: 0
       }
 

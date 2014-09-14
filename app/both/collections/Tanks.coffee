@@ -64,7 +64,7 @@ Tanks.helpers
     @setProps({angle: angle})
     @msg("rotate #{@rotate}")
 
-  doShoot: (vec) ->
+  doShoot: (vec, battle) ->
     # tell Battle to handle the bullet
     
     @msg("shoot #{vec}")

@@ -31,6 +31,8 @@ Battles.helpers
     $("#msg").text(txt)
 
 
+
+
 if Meteor.isServer
   Meteor.startup ->
 
@@ -40,18 +42,26 @@ if Meteor.isServer
       {
         name: "room1"
         bid: 1
+        bullets: []
+        tanks: []
       }
       {
         name: "room2"
         bid: 2
+        bullets: []
+        tanks: []
       }
       {
         name: "room3"
         bid: 3
+        bullets: []
+        tanks: []
       }
       {
         name: "room4"
         bid: 4
+        bullets: []
+        tanks: []
       }
 
     ]
