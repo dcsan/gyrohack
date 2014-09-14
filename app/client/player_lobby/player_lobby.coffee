@@ -9,6 +9,9 @@ pickTank = (e) ->
   battleId = parseInt(battleId)
   battle = Battles.findOne({ battleId:battleId })
   tank = Tanks.findOne({idx: tid})
+
+  console.log("battleId #{battleId} battle:", battle)
+
   battle.addTank(tank)
   tank.joinRoom(battle, battle._id)
 

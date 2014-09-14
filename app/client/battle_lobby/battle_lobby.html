@@ -12,8 +12,12 @@
 <ul>
 {{#each battles}}
   <li>
-    <button class="pickBattle btn btn-large btn-red btnspacing center-block" battleId="{{this.battleId}}" >
-      {{this.name}}<span class="badge pull-right"> {{this.tankCount}} tanks</span>
+    <button 
+      class="pickBattle btn btn-large btn-red btnspacing center-block" 
+      battleId="{{this.battleId}}" >
+      {{this.name}}
+      <span battleId="{{this.battleId}}"
+            class="badge pull-right"> {{this.tankCount}} tanks</span>
     </button>
   </li>
   

@@ -1,6 +1,6 @@
 pickBattle = (e) ->
   idx = $(e.target).attr("battleId")
-  Session.set("battleId", idx)
+  dclib.sessSet("battleId", idx)
   Router.go("/player_lobby")
 
 Template.battle_lobby.events
