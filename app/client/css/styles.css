@@ -181,10 +181,13 @@ overflow: hidden;
 }
 
 #battle_map {
-	overflow: hidden;
-	height: 70%;
+	overflow: auto;
+	margin-left: auto;
+	margin-right: auto;
+	height: auto;
 	width: 95%;
 	min-height: 65%;
-	min-width: 65%
+	min-width: 65%;
+	max-height: 80%;
 }
 
