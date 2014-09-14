@@ -10,11 +10,12 @@ pickTank = (e) ->
   battle = Battles.findOne({ battleId:battleId })
   tank = Tanks.findOne({idx: tid})
   battle.addTank(tank)
+  tank.joinRoom(battle, battle._id)
+
+  # init tank position (hard coded for 4 tanks)
   w = $(window).width()
   h = $(window).height()
   console.log("w =" + w + " h = " + h)
-  tank.joinRoom(battle)
-
   if tid == 1
       #upper left
       tank.setProps({top:0, left:0})

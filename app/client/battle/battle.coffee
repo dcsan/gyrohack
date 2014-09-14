@@ -3,6 +3,7 @@ data = null
 hasRun = false
 tank = null
 battle = null
+tanks = null
 
 handleKeys = (e) ->
   
@@ -44,6 +45,8 @@ Template.battle.initBattle = (data) ->
   window.battle = battle # debug
 
   $(window).on 'keydown', (e) -> handleKeys(e)
+  if Meteor.isClient
+    Meteor.setInterval(update, 50)
   hasRun = true
 
 clickTank = (e) ->
@@ -58,3 +61,6 @@ Template.battle.events =
 
   "click #battle_map": (e) ->
     clickMap(e)
+
+update = () ->
+  MapItems.updateAll(window.data)

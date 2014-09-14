@@ -1,5 +1,7 @@
 @MapItems = new Meteor.Collection('MapItems')
 
+ITEM_LIFETIME = 200
+
 if Meteor.isServer
   Meteor.publish "MapItems", (query) ->
     console.log("sub.MapItems", query)
@@ -16,6 +18,10 @@ if Meteor.isServer
 
 MapItems.helpers
 
+  msg: (txt, obj) ->
+    console.log(txt, obj)
+    $("#msg").text(txt)
+
   setProps: (props) ->
     MapItems.update(
       @_id,
@@ -23,8 +29,19 @@ MapItems.helpers
     )
     _.extend(@, props)
 
+  deleteMe: () ->
+    @msg("delete mapItem #{@_id}")
+    MapItems.remove({_id: @_id})
+
   tick: () ->
-    setProps({age: @age+1})
+    @age = @age+1
+    if @age % 10 == 0
+      @msg("tick", @age)
+    @setProps({age: @age})
+    if @age > ITEM_LIFETIME
+      return true
+    else
+      return false
 
 MapItems.reset = () ->
   console.log("MapItems.reset")
@@ -34,4 +51,14 @@ MapItems.reset = () ->
 MapItems.create = (obj) ->
   obj.state = "new"
   obj.age = 0
-  MapItems.insert(obj)
+  res = MapItems.insert(obj)
+  return res
+
+MapItems.updateAll = (data) ->
+  mapItems = MapItems.find({battleId: data.battleId }).fetch()
+  _.each mapItems, (item) ->
+    # console.log("tick", item)
+    kill = item.tick()
+    if (kill)
+      item.deleteMe()
+  # console.log("items:", mapItems.count() )

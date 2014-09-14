@@ -42,13 +42,19 @@ Router.map ->
       [
         Meteor.subscribe("Battles", {battleId: parseInt(@params.battleId) })
         Meteor.subscribe("Tanks", {battleId: parseInt(@params.battleId) })
+        Meteor.subscribe("MapItems", {battleId: parseInt(@params.battleId) })
       ]
     data: ->
       if @ready()
+        battleId = parseInt(@params.battleId)
+        mapItems = MapItems.find({battleId: battleId})
         @blob = {
           tankCount: Tanks.find().count()
-          tanks: Tanks.find({battleId: parseInt(@params.battleId)})
-          battle: Battles.findOne({battleId: parseInt(@params.battleId) })
+          itemCount: mapItems.count()
+          battleId: battleId
+          tanks: Tanks.find({battleId: battleId})
+          battle: Battles.findOne({battleId: battleId })
+          mapItems: mapItems
         }
         Template.battle.initBattle(@blob)
         return @blob

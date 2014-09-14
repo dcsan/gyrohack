@@ -37,6 +37,19 @@
   </div>
   {{/each}}
 
-<!--   <div id='msg' class='msg-box'>msg</div> -->
+
+  {{#each mapItems}}
+    <div 
+      class="map-item-{{type}}"
+      style="top: {{top}}px; left: {{left}}px;"
+    >
+      <img  id="{{_id}}" 
+            class="map-item-image"
+            src="/images/mapItems/{{type}}.png" />
+    </div>
+  {{/each}}
+
+  <div id='msg' class='msg-box'>msg</div>
+  <div id='data-box' class='map-data-box'>items: {{itemCount}}</div>
 
 </template>
