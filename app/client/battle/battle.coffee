@@ -1,6 +1,6 @@
 moveEvent = null
 data = null
-@Battle = {
+Battle = {
   hasRun: false
 }
 

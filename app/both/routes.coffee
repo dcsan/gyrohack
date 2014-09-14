@@ -27,6 +27,14 @@ Router.map ->
   @route "mobile",
     path: "/mobile"
 
+  @route "battle_lobby",
+    path: "/battle_lobby"
+    waitOn: ->
+      Meteor.subscribe("Battles", {} )
+    data: ->
+      battleCount: Battles.find().count()
+      battles: Battles.find()
+
 
   @route "player_lobby",
     path: "/player_lobby"
@@ -99,5 +107,10 @@ Router.map ->
       playerName: @params.playerName
       player: Players.findOne({name: @params.playerName})
 
-  @route "about"
+  @route "about",
+    path: "/about"
+
+  @route "admin",
+    path: "/admin"
+
   return

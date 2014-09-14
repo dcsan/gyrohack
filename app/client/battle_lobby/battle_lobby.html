@@ -1,0 +1,16 @@
+<template name="battle_lobby">
+
+<h1>Choose a battle to watch!</h1>
+
+<ul>
+{{#each battles}}
+  <li>
+    <button class="pickBattle btn btn-large btn-primary" 
+      bid="{{this.bid}}" >
+      {{this.bid}} {{this.name}}
+    </button>
+  </li>
+  
+{{/each}}
+</ul>
+</template>
