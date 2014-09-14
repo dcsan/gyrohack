@@ -34,4 +34,5 @@ MapItems.reset = () ->
 MapItems.create = (obj) ->
   obj.state = "new"
   obj.age = 0
-  MapItems.insert(obj)
+  res = MapItems.insert(obj)
+  return res

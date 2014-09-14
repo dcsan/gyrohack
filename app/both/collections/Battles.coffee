@@ -57,7 +57,8 @@ Battles.helpers
     _.extend(@, props)
     # console.log('player.setProps', props, @)
 
-  msg: (txt) ->
+  msg: (txt, obj) ->
+    console.log(txt, obj)
     $("#msg").text(txt)
 
   playerCount: () ->
@@ -77,13 +78,14 @@ Battles.helpers
     @setProps(tanks: tanks)
 
   addItem: (evt) ->
+    window.evt = evt
     item = MapItems.create({
-      battle: this
-      px: 100
-      py: 100
+      battleId: this.battleId
       type: "gold"
+      top: evt.pageY
+      left: evt.pageX
     })
-    console.log('addItem', item)
+    @msg("addItem", item)
     # loot = @items.push(item)
     # @setProps(lootItems: loot)
 
