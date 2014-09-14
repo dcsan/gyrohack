@@ -1,7 +1,12 @@
 <template name="battle" class="mainarena">
-  <h1>battle</h1>
-
-  <div id="msg">ready</div>
+  <div id="top">
+      <div class="container">
+        <div class="row">
+          <h1 class = "toptitle" style = "text-align:center;">Battle</h1>
+        </div>
+      </div>
+  </div>
+  
   <img  
     id='battle_map'     
     src="/images/map.png"
@@ -24,7 +29,7 @@
     </div>
     <img  
       class='tank-icon' 
-      style="transform: rotate({{rotate}}rad);"      
+      style="transform: rotate({{rotate}}rad);"    
       id="tank-{{name}}"
       src="/images/players/tank{{idx}}.png"
     />
