@@ -1,10 +1,5 @@
 <template name="player_lobby">
 
-  <a 
-    class="btn btn-red center-block c" 
-    href="/battle/{{sessGet 'battleId'}}">Spectator mode!
-  </a> 
-
   <div id="top">
       <div class="container">
         <div class="row">
@@ -13,6 +8,12 @@
       </div>
   </div>
 
+    <a 
+    class="btn btn-red center-block c" 
+    href="/battle/{{sessGet 'battleId'}}">Spectator mode!
+  </a> 
+
+  <br />
 
   <div class="player-lobby-list">
     {{#each tanks}}
