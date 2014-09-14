@@ -35,7 +35,7 @@ Router.map ->
       Meteor.subscribe("Battles", {} )
     data: ->
       battleCount: Battles.find().count()
-      battles: Battles.find()
+      battles: Battles.find({}, {sort: {bid:1}})
 
 
   @route "player_lobby",

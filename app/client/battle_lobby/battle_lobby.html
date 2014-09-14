@@ -1,16 +1,29 @@
 <template name="battle_lobby">
+ 
 
-<h1>Choose a battle to watch!</h1>
+<h1>Choose a battle</h1>
+  <div id="top">
+      <div class="container">
+        <div class="row">
+          <h1 class = "toptitle" style = "text-align:center;">Select a battlefield</h1>
+        </div>
+      </div>
+  </div>
 
+
+<div class = "col-sm-4 col-sm-offset-4 col-xs-6 col-xs-offset-3 bottomspace">
 <ul>
 {{#each battles}}
   <li>
-    <button class="pickBattle btn btn-large btn-primary" 
+    <button class="pickBattle btn btn-large btn-red btnspacing center-block" 
       bid="{{this.bid}}" >
-      {{this.bid}} {{this.name}}
+      {{this.name}}
     </button>
+    players: {{this.playerCount}}
   </li>
   
 {{/each}}
 </ul>
+
+</div>
 </template>

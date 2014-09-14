@@ -30,6 +30,9 @@ Battles.helpers
   msg: (txt) ->
     $("#msg").text(txt)
 
+  playerCount: () ->
+    return @players.length
+
 
 
 
@@ -67,5 +70,6 @@ if Meteor.isServer
     ]
 
     _.each battles, (p) ->
+      p.players = []
       Battles.insert p
 
