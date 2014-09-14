@@ -30,7 +30,7 @@
 <div class = "container">
 <div class = "col-sm-10 col-xs-10 center-block">
     <table>
-  {{#each players}}
+  {{#each tanks}}
     <tr>
       <td>
         <span class="btn btn-large btn-primary">
@@ -46,11 +46,11 @@
 
       <td>
         <a class="btn btn-large btn-default" 
-          href="/viewer/{{this.name}}">viewer</a>
+          href="/viewer/{{this.name}}">viewer(not working)</a>
       </td>
       <td>
         <a class="btn btn-large btn-default" 
-          href="/space/{{this.name}}">space</a>
+          href="/space/{{this.pid}}">space</a>
       </td>
     </tr>
   {{/each}}

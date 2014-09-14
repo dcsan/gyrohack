@@ -4,10 +4,10 @@
   
   <div>
     <p>
-      name: {{player.name}}
+      name: {{tank.name}}
     </p>
     <p>
-      id: {{player._id}}
+      id: {{tank._id}}
     </p>
   </div>
 
@@ -18,9 +18,9 @@
         <td>rotate</td>
       </tr>
       <tr>
-        <td>{{player.top}}</td>
-        <td>{{player.left}}</td>
-        <td>{{player.rotate}}</td>
+        <td>{{tank.top}}</td>
+        <td>{{tank.left}}</td>
+        <td>{{tank.rotate}}</td>
       </tr>
   </table>
 
@@ -49,6 +49,10 @@
       </tr>
     </table>
   </div>
+
+  <a id="shoot" class="btn btn-large btn-default" href="#">Shoot</a>
+  <a id="move" class="btn btn-large btn-default" href="#">Move</a>
+
 
 
 </template>
