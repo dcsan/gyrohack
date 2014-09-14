@@ -3,13 +3,17 @@
 
   <div id="msg">ready</div>
   <img  
-      id='battle_map'     
-      src="/images/map.png"
-    />
+    id='battle_map'     
+    src="/images/map.png"
+  />
+
   {{#each tanks}}
-  <div  class="tank-box" 
-        id="tank-{{name}}" 
-        style="top:{{top}}px; left:{{left}}px;">
+
+  <div  
+    class="tank-box" 
+    id="tank-{{name}}" 
+    style="top:{{top}}px; left:{{left}}px;"
+  >
         
     <div class="tank-label">
       {{name}}
@@ -23,7 +27,7 @@
       class='tank-icon' 
       style="transform: rotate({{rotate}}rad);"      
       id="tank-{{name}}"
-      src="/images/players/tank{{pid}}.png"
+      src="/images/players/tank{{idx}}.png"
     />
 
 

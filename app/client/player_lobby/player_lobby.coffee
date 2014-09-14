@@ -10,6 +10,7 @@ pickTank = (e) ->
   battle = Battles.findOne( {bid:battleId} )
   tank = Tanks.findOne({idx: tid})
   battle.addTank(tank)
+  tank.joinRoom(battle)
 
   Router.go("/player_remote/#{tid}")
 
