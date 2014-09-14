@@ -1,8 +1,31 @@
 <template name="player_remote">
 
+  <div id="top">
+      <div class="container">
+        <div class="row">
+          <h1 class = "toptitle2" style = "text-align:center;">Turn the phone to turn the Tank</h1>
+        </div>
+      </div>
+  </div>
 
-<h1> hello </h1>
   {{#with tank}}
+
+<div class = "container center-block spacer">
+  <div class =  "row" >
+    <div class = "col-xs-10 col-xs-offset-1">
+    <a href = ""><img src='/images/btn{{pid}}a.png' class = "tankchoice2"></a>
+    </div>
+  </div>
+  <br />
+  <br />
+  <div class =  "row" >
+    <div class = "col-xs-10 col-xs-offset-1">
+    <a href = ""><img src='/images/btn{{pid}}b.png' class = "tankchoice2"></a>
+    </div>
+  </div>
+</div>
+
+
 
   <div  class="tank-box" 
         id="tank-{{name}}" 
