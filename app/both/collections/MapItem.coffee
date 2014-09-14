@@ -1,6 +1,6 @@
 @MapItems = new Meteor.Collection('MapItems')
 
-ITEM_LIFETIME = 200
+ITEM_LIFETIME = 2000
 
 if Meteor.isServer
   Meteor.publish "MapItems", (query) ->
@@ -36,7 +36,7 @@ MapItems.helpers
   #FIXME - use realtime not ticks
   tick: () ->
     @age = @age+1
-    if @age % 10 == 0
+    if @age % 100 == 0
       @msg("tick", @age)
     @setProps({age: @age})
     if @age > ITEM_LIFETIME
