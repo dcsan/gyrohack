@@ -42,21 +42,10 @@ Tanks.helpers
 
     deltaX = Math.sin(curAngle)
     deltaY = Math.cos(curAngle)
-
-#    t = @top + (deltaX * vel)
-#    l = @left + (deltaY * vel)
-#    console.log("left ", @left) # debug
-#    console.log("top ", @top) # debug
-
-#    @setProps(top: t)
-#    @setProps(left: l)
-   
-    @setProps("boosting", true)
-    @msg("boosting #{@boosting}")
+    @setProps({boosting: true})
 
   doStop: () ->
-    @setProps("boosting", false)
-    @msg("boosting #{@boosting}")
+    @setProps({boosting: false})
 
   doRotate: (deltaRad) ->
     @angle ?= Math.PI / 2
@@ -95,5 +84,23 @@ Tanks.reset = () ->
       name: name
     }
     Tanks.insert tank
+
+Tanks.updateAll = (tanks) ->
+  _.each tanks (tank) ->
+    if tank.boostring
+      console.log("executing boosting")
+      curAngle = tank.angle or Math.PI / 2
+      console.log("angle ", curAngle) # debug
+
+      deltaX = Math.sin(curAngle)
+      deltaY = Math.cos(curAngle)
+
+      t = tank.top + (deltaX * 5)
+      l = tank.left + (deltaY * 5)
+
+      console.log("left ", l) # debug
+      console.log("top ", t) # debug
+
+      tank.setProps({"left": l, "top": t})
 
 
