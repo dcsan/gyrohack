@@ -67,7 +67,7 @@ Router.map ->
       if @ready()
         @blob = {
           tankCount: Tanks.find().count()
-          tanks: Tanks.find()
+          tanks: Tanks.find({room: parseInt(@params.room)})
           battle: Battles.find({bid: @params.bid})
         }
         Template.battle.initBattle(@blob)

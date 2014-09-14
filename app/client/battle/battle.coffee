@@ -35,7 +35,7 @@ Template.battle.initBattle = (data) ->
   return if hasRun
   console.log("initBattle")
   window.data = data
-  tank = Tanks.findOne()
+  window.tanks = data.tanks # debug
   battle = data.battle
   console.log("tank1,2", tank)
   $(window).on 'keydown', (e) -> handleKeys(e)
