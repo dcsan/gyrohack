@@ -13,3 +13,7 @@ if Meteor.isServer
       return true
     remove: () ->
       return true
+
+Players.reset = () ->
+  console.log("Players.reset")
+

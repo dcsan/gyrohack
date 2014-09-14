@@ -104,4 +104,17 @@ Router.map ->
   @route "admin",
     path: "/admin"
 
+  @route "reset",
+    path: "/reset/:wot?"
+    where: 'server'
+
+    action: ->
+      wot = @params.wot
+      console.log("reset")
+      Tanks.reset()
+      Players.reset()
+      Battles.reset()
+      @response.writeHead(200, {'Content-Type': 'text/html'})
+      @response.end("reset: done")
+
   return

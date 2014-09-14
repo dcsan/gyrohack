@@ -35,7 +35,8 @@ Template.battle.initBattle = (data) ->
   return if hasRun
   console.log("initBattle")
   window.data = data # debug
-  tanks = data.tanks.fetch() # debug
+  tanks = data.tanks.fetch()
+  console.log("tankCount", tanks.length)
   tank = tanks[0] # debug first tank's handle
   window.tank = tank # debug
 
