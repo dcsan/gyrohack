@@ -66,6 +66,11 @@ a, a:hover{
 	text-align: center;
 }
 
+.tankchoice{
+	width:200px;
+	display:inline;
+}
+
 #top {
 	background: #3C464F;
 	margin-bottom: 40px;
@@ -135,7 +140,7 @@ overflow: hidden;
   height: 50px;
   bottom: 0px;
   color: white;
-  background-color: black;
+  background-color: white;
   width: 100%;
 }
 
