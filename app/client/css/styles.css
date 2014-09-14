@@ -15,6 +15,14 @@ a, a:hover{
 	text-decoration: none;
 }
 
+li{
+	list-style: none;
+}
+
+.btnspacing{
+	margin-bottom: 10px;
+}
+
 .headerimage{
 	height:190px;
 	width:200px;
