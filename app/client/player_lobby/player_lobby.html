@@ -7,10 +7,20 @@
         </div>
       </div>
   </div>
- 
-
+<div class = "col-md-6 col-md-offset-3">
+  <a 
+    class="btn btn-red center-block c" 
+    href="/battle_lobby">back to battle lobby
+  </a> 
   <br />
+  <a 
+    class="btn btn-red center-block c" 
+    href="/battle/{{sessGet 'battleId'}}">Spectator mode!
+  </a>
+</div>
+<br />
 
+<div class = "col-md-3">
   <div class="player-lobby-list">
     {{#each tanks}}
     <div 
@@ -23,7 +33,6 @@
         src="/images/players/tank{{idx}}.png"
         style="transform: rotate({{rotate}}rad);"
       /> -->
-
       <button tankid="{{idx}}" class="tankPick btn btn-large">
         <img 
           src='/images/controlstank{{idx}}.png'
@@ -35,16 +44,5 @@
 
     {{/each}}
   </div>
-
-  <br />
-  <a 
-    class="btn btn-red center-block c" 
-    href="/battle_lobby">back to battle lobby
-  </a> 
-  <br />
-  <a 
-    class="btn btn-red center-block c" 
-    href="/battle/{{sessGet 'battleId'}}">Spectator mode!
-  </a>
-  
+</div>  
 </template>
