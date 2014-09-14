@@ -37,13 +37,15 @@ Tanks.helpers
   
   doBoost: (vel) ->
     curAngle = @angle or Math.PI / 2 # default to rotation 0
-    console.log("angle ", @angle)
+    console.log("angle ", @angle) # debug
 
     deltaX = Math.sin(curAngle)
     deltaY = Math.cos(curAngle)
 
     t = @top + (deltaX * vel)
     l = @left + (deltaY * vel)
+    console.log("left ", @left) # debug
+    console.log("top ", @top) # debug
 
     @setProps(top: t)
     @setProps(left: l)
