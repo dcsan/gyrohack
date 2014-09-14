@@ -1,5 +1,7 @@
 @MapItems = new Meteor.Collection('MapItems')
 
+ITEM_LIFETIME = 200
+
 if Meteor.isServer
   Meteor.publish "MapItems", (query) ->
     console.log("sub.MapItems", query)
@@ -36,7 +38,7 @@ MapItems.helpers
     if @age % 10 == 0
       @msg("tick", @age)
     @setProps({age: @age})
-    if @age > 200
+    if @age > ITEM_LIFETIME
       return true
     else
       return false
