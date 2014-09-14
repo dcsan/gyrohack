@@ -1,6 +1,7 @@
 pickTank = (e) ->
   tid = $(e.target).attr("tankid")
   console.log("pickTank", tid)
+  window.evt = e
   Session.set("tankId", tid)
   Router.go("/player_remote/#{tid}")
   # Router.go("/player_remote/#{tid}")
