@@ -33,6 +33,14 @@ Battles.helpers
   playerCount: () ->
     return @players.length
 
+  tankCount: () ->
+    return @tanks.length
+
+  addTank: (tank) ->
+    console.log("adding tank #{tank._id} to battle #{@bid}")
+    @tanks.push(tank._id)
+    @setProps(tanks: @tanks) # save it
+
 
 if Meteor.isServer
   Meteor.startup ->
@@ -61,5 +69,6 @@ if Meteor.isServer
 
     _.each battles, (p) ->
       p.players = []
+      p.tanks = []
       Battles.insert p
 
