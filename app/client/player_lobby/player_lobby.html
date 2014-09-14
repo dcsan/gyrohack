@@ -1,15 +1,24 @@
 <template name="player_lobby">
 
-  <h1>Choose your Tank!</h1>
+  <a 
+    class="btn btn-red center-block c" 
+    href="/battle/{{sessGet 'bid'}}">Spectator mode!
+  </a> 
+
+  <div id="top">
+      <div class="container">
+        <div class="row">
+          <h1 class = "toptitle" style = "text-align:center;">Choose your Tank</h1>
+        </div>
+      </div>
+  </div>
+
 
   <div class="player-lobby-list">
     {{#each players}}
     <div 
       class="player-list-box" 
       id="player-{{name}}" >
-      <div class="player-label">
-        name: {{name}}
-      </div>
 
       <img  
         class='player-icon' 
@@ -17,12 +26,23 @@
         src="/images/players/tank{{pid}}.png"
         style="transform: rotate({{rotate}}rad);"
       />
+
       <button tankid="{{pid}}" class="tankPick btn btn-large">
-        Pick me!
+        <img 
+          src='/images/controlstank{{pid}}.png'
+          style = "display:inline;"
+          tankid="{{pid}}"
+          class="tankchoice" />
       </button>
     </div>
 
     {{/each}}
   </div>
+
+
+  <a 
+    class="btn btn-red center-block c" 
+    href="/battle_lobby">back to battle lobby
+  </a> 
   
 </template>

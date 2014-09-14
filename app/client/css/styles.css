@@ -15,6 +15,14 @@ a, a:hover{
 	text-decoration: none;
 }
 
+li{
+	list-style: none;
+}
+
+.btnspacing{
+	margin-bottom: 10px;
+}
+
 .headerimage{
 	height:190px;
 	width:200px;
@@ -30,7 +38,7 @@ a, a:hover{
 }
 
 .header{
-	margin-top: 7%;
+	margin-top: 2%;
 	text-align: center;
 }
 
@@ -85,6 +93,8 @@ a, a:hover{
 #top {
 	background: #3C464F;
 	margin-bottom: 40px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
 .toptitle {
