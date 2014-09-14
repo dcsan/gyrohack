@@ -16,12 +16,26 @@ Router.map ->
 
   @route "splash",
     path: "/splash"
+    layoutTemplate: "splash"
 
   @route "controls",
     path: "/controls"
+    layoutTemplate: "controls"
+
+  @route "remote",
+    path: "/remote"
+    layoutTemplate: "remote"
 
   @route "mobile",
     path: "/mobile"
+
+  @route "battle_lobby",
+    path: "/battle_lobby"
+    waitOn: ->
+      Meteor.subscribe("Battles", {} )
+    data: ->
+      battleCount: Battles.find().count()
+      battles: Battles.find()
 
 
   @route "player_lobby",
@@ -45,12 +59,16 @@ Router.map ->
   @route "battle",
     path: "/battle/:room"
     waitOn: ->
-      Meteor.subscribe("Tanks", {room: parseInt(@params.room) })
+      [
+        Meteor.subscribe("Tanks", {room: parseInt(@params.room) }),
+        Meteor.subscribe("Battles", {bid: parseInt(@params.room) })
+      ]
     data: ->
       if @ready()
         @blob = {
           tankCount: Tanks.find().count()
           tanks: Tanks.find()
+          battle: Battles.find({bid: @params.bid})
         }
         Template.battle.initBattle(@blob)
         return @blob
@@ -86,5 +104,10 @@ Router.map ->
       playerName: @params.playerName
       player: Players.findOne({name: @params.playerName})
 
-  @route "about"
+  @route "about",
+    path: "/about"
+
+  @route "admin",
+    path: "/admin"
+
   return

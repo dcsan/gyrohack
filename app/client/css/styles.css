@@ -66,15 +66,36 @@ a, a:hover{
 	text-align: center;
 }
 
+.tankchoice{
+	display:inline;
+	max-width: 30%;
+	margin-left: 10%;
+}
+
+.tankchoice2{
+	display:inline;
+	max-width: 80%;
+	margin-left: 12%;
+}
+
+.spacer{
+	margin-bottom: 100px;
+}
+
 #top {
 	background: #3C464F;
 	margin-bottom: 40px;
-	padding-top: 15px;
-	padding-bottom: 15px;
 }
 
 .toptitle {
 	color: white;
+}
+
+.toptitle2 {
+	color: white;
+	font-size: 2em;
+	padding-left: 15%;
+	padding-right: 15%;
 }
 
 .bottomspace {
@@ -135,7 +156,7 @@ overflow: hidden;
   height: 50px;
   bottom: 0px;
   color: white;
-  background-color: black;
+  background-color: white;
   width: 100%;
 }
 

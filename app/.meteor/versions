@@ -10,7 +10,6 @@ check@1.0.0
 coffeescript@1.0.2-rc1
 ctl-helper@1.0.3
 ctl@1.0.1
-d3@1.0.0
 dburles:collection-helpers@1.0.0
 ddp@1.0.8
 deps@1.0.3
@@ -46,7 +45,6 @@ reactive-var@1.0.1
 reload@1.1.0-rc1
 retry@1.0.0
 routepolicy@1.0.0-cordova1
-sergeyt:d3@3.4.1
 session@1.0.1
 sewdn:velocityjs@0.8.0
 spacebars-compiler@1.0.2

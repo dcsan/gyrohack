@@ -12,12 +12,17 @@
       {{name}}
     </div>
 
+    <div 
+      class='tank-fire'
+      style="transform: rotate({{rotate}}rad);"  >
+    </div>
     <img  
       class='tank-icon' 
+      style="transform: rotate({{rotate}}rad);"      
       id="tank-{{name}}"
-      style="transform: rotate({{rotate}}rad);"
       src="/images/players/tank{{pid}}.png"
     />
+    
 
   </div>
   {{/each}}

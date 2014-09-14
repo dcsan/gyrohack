@@ -3,6 +3,7 @@ pickTank = (e) ->
   console.log("pickTank", tid)
   Session.set("tankId", tid)
   Router.go("/player_remote/#{tid}")
+  # Router.go("/player_remote/#{tid}")
 
 Template.player_lobby.events
   'click .tankPick': (e) ->
