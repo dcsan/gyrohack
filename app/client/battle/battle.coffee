@@ -60,24 +60,7 @@ Template.battle.initBattle = (data) ->
 
 update = () ->
   MapItems.updateAll(window.data)
-  tanks = Tanks.find({battleId: window.data.battleId}).fetch()
-  _.each tanks, (tank) ->
-    if tank.boosting
-      console.log("executing boosting")
-        #curAngle = tank.angle or Math.PI / 2
-        #console.log("angle ", curAngle) # debug
-
-        #deltaX = Math.sin(curAngle)
-        #deltaY = Math.cos(curAngle)
-
-        #t = tank.top + (deltaX * 5)
-        #l = tank.left + (deltaY * 5)
-
-        #console.log("left ", l) # debug
-        #console.log("top ", t) # debug
-
-        #tank.setProps({"left": l, "top": t})
-
+  Tanks.updateAll(window.data.battleId)
 
 clickTank = (e) ->
   console.log("clicked", e.target.id)
