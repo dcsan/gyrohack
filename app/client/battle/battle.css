@@ -1,8 +1,8 @@
 .tank-box {
   position: absolute;
   background-color: rgba(255, 255, 255, 0.5);
-  width: 200px;
-  height: 200px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   border: 1px dashed #666;
 }
@@ -22,8 +22,8 @@
 
 .tank-icon {
   position: absolute;
-  height: 200px;  /*size of icons*/
-  width: 200px;
+  height: 100px;  /*size of icons*/
+  width: 100px;
   left: 0px;
   top: 0px;
 }

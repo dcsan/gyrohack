@@ -60,16 +60,21 @@ MapItems.create = (obj) ->
   res = MapItems.insert(obj)
   return res
 
+updateCount = 0
 MapItems.updateAll = (data) ->
-  mapItems = MapItems.find({battleId: data.battleId }).fetch()
-  tanks = Tanks.find({battleId: battleId})
+  updateCount++
+  battleId = data.battleId
+  mapItems = MapItems.find({battleId: battleId }).fetch()
+  tanks = Tanks.find({battleId: battleId}).fetch()
   _.each mapItems, (item) ->
-    # console.log("tick", item)
     kill = item.tick()
     if (kill)
       item.deleteMe()
     else
       _.each tanks, (tank) ->
+        # if updateCount % 50 == 0  # debug
+          # console.log("updateAll", items)
+
         if tank.collide(item)
           item.deleteMe()
           tank.score(item.score)
