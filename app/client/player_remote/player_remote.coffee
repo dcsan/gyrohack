@@ -15,7 +15,7 @@ deviceMotionHandler = (eventData) ->
   @gamma_buffer.push eventData.rotationRate.gamma
 
   curEventTime = (new Date()).getTime()
-  return if (curEventTime - lastEventTime) < 100
+  return if (curEventTime - lastEventTime) < 50
 
   lastEventTime = curEventTime
   # console.log("pilot updated at, curTime", curEventTime)
@@ -104,7 +104,7 @@ clickMove = (e) ->
 
 clickShoot = (e) ->
   tank.doShoot(-1)
-  console.log("clicked shoot", e.target.id)
+  console.log("clicked shoot in ", battle)
 
 Template.player_remote.events =
   "click #move": (e) ->
