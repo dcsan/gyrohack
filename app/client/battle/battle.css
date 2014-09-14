@@ -18,9 +18,10 @@
 
 .tank-icon {
   position: absolute;
-  height: 100px;  /*size of icons*/
-  width: 100px;
-  left: 50px;
+  height: 200px;  /*size of icons*/
+  width: 200px;
+  left: 0px;
+  top: 0px;
 }
 
 .tank-info {

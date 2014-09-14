@@ -28,6 +28,7 @@ handleKeys = (e) ->
 # window events have to be removed manually when leaving page
 Template.battle.exitRoom = (room) ->
   console.log('player exitRoom', room)
+  Battle.hasRun = false
   $(window).off 'keydown'
 
 Template.battle.initBattle = (data) ->
