@@ -77,6 +77,6 @@ MapItems.updateAll = (data) ->
 
         if tank.collide(item)
           item.deleteMe()
-          tank.score(item.score)
+          tank.getItem(item)
 
   # console.log("items:", mapItems.count() )

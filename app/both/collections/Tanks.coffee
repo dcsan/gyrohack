@@ -38,25 +38,14 @@ Tanks.helpers
   
   doBoost: () ->
     curAngle = @angle or Math.PI / 2 # default to rotation 0
-    console.log("angle ", @angle) # debug
+    #console.log("angle ", @angle) # debug
 
     deltaX = Math.sin(curAngle)
     deltaY = Math.cos(curAngle)
-
-#    t = @top + (deltaX * vel)
-#    l = @left + (deltaY * vel)
-#    console.log("left ", @left) # debug
-#    console.log("top ", @top) # debug
-
-#    @setProps(top: t)
-#    @setProps(left: l)
-   
-    @setProps("boosting", true)
-    @msg("boosting #{@boosting}")
+    @setProps({boosting: true})
 
   doStop: () ->
-    @setProps("boosting", false)
-    @msg("boosting #{@boosting}")
+    @setProps({boosting: false})
 
   doRotate: (deltaRad) ->
     @angle ?= Math.PI / 2
@@ -81,8 +70,24 @@ Tanks.helpers
     @msg("shoot #{vec}")
 
   collide: (item) ->
+    OBJSIZE = 100
+    rect1 = {x: @left, y: @top, width: OBJSIZE, height: OBJSIZE}
+    rect2 = {x: item.left, y: item.top, width: OBJSIZE, height: OBJSIZE}
+
+    if rect1.x < rect2.x + rect2.width &&
+       rect1.x + rect1.width > rect2.x &&
+       rect1.y < rect2.y + rect2.height &&
+       rect1.height + rect1.y > rect2.y
+      console.log("collision")
+      return true
+
     return false
 
+  getItem: (item) ->
+    score = @score or 0
+    @setProps({
+      score: score + (item.score or 1)
+    })
 
 Tanks.reset = () ->
   console.log("Tanks.reset")
@@ -96,4 +101,20 @@ Tanks.reset = () ->
     }
     Tanks.insert tank
 
+Tanks.updateAll = (battleId) ->
+  # find the tanks 
+  tanks = Tanks.find({battleId: battleId}).fetch()
+
+  # update those are moving
+  _.each tanks, (tank) ->
+    if tank.boosting
+      curAngle = tank.angle or Math.PI / 2
+
+      deltaX = Math.sin(curAngle)
+      deltaY = Math.cos(curAngle)
+
+      t = tank.top + (deltaX * 5)
+      l = tank.left + (deltaY * 5)
+
+      tank.setProps({"left": l, "top": t})
 

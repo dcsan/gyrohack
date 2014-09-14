@@ -1,3 +1,4 @@
+TANK_SIZE = 100
 pickTank = (e) ->
   # debugger;
   tid = $(e.target).attr("tankid")
@@ -16,8 +17,9 @@ pickTank = (e) ->
   tank.joinRoom(battle, battle._id)
 
   # init tank position (hard coded for 4 tanks)
-  w = $(window).width()
-  h = $(window).height()
+  w = battle.w
+  h = battle.h
+
   console.log("w =" + w + " h = " + h)
   if tid == 1
       #upper left
@@ -25,15 +27,15 @@ pickTank = (e) ->
       console.log("tank " + tid)
   else if tid == 2
       #upper right
-      tank.setProps({top:0, left:w})
+      tank.setProps({top:0, left:w - TANK_SIZE})
       console.log("tank " + tid)
   else if tid == 3
       #lower left
-      tank.setProps({top:h, left:0})
+      tank.setProps({top:h - TANK_SIZE, left:0})
       console.log("tank " + tid)
   else if tid == 4
       #lower right
-      tank.setProps({top:h, left:w})
+      tank.setProps({top:h - TANK_SIZE, left:w - TANK_SIZE})
       console.log("tank " + tid)
 
   Router.go("/player_remote/#{tid}")
