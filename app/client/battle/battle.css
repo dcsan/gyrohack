@@ -65,6 +65,14 @@
 }
 
 
+.map-item-bomb {
+  position: absolute;
+  z-index: 100;
+  width: 100px;
+  height: 100px;  
+}
+
+
 .map-item-image {
   border-radius: 50%;
   width: 100px;
