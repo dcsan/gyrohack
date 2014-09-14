@@ -1,7 +1,7 @@
 @Tanks = new Meteor.Collection('Tanks')
 
-BOOST_SPEED = 10
-ROTATE_SPEED = 10
+BOOST_SPEED = 1
+ROTATE_SPEED = 1
 
 if Meteor.isServer
   Meteor.publish "Tanks", (query) ->

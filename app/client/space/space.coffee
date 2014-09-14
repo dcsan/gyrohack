@@ -4,7 +4,7 @@ tank = null
   hasRun: false
 }
 @gamma_buffer = []
-
+ROTATE_K = 10 # how sensitive the rotate control is
 
 resizeHandler = (evt) ->
   console.log("resizeHandler", evt)
@@ -17,7 +17,7 @@ deviceMotionHandler = (eventData) ->
   return if (curEventTime - lastEventTime) < 100
 
   lastEventTime = curEventTime
-  console.log("pilot updated at, curTime", curEventTime)
+  # console.log("pilot updated at, curTime", curEventTime)
 
   sum = 0
   for item in @gamma_buffer
@@ -56,20 +56,15 @@ deviceMotionHandler = (eventData) ->
 
   if ave > 0
     # rotate left
-    rotate = -1 * ave * 25
+    rotate = -1 * ave * ROTATE_K
   else
     # rotate right
     ave = Math.abs(ave)
-    rotate = ave * 25
+    rotate = ave * ROTATE_K
 
   # console.log("rotate updated to: " + rotate)
 
-  Tanks.update(
-    tank._id,
-    $set: {
-      rotate: rotate
-    }
-  )
+  tank.doRotate(rotate)
   return
 
 Template.space.initSpace = (data) ->
@@ -91,9 +86,11 @@ Template.space.exitRoom = (room) ->
 
 
 clickMove = (e) ->
+  tank.doBoost(1)
   console.log("clicked move", e.target.id)
 
 clickShoot = (e) ->
+  tank.doShoot(-1)
   console.log("clicked shoot", e.target.id)
 
 Template.space.events =
