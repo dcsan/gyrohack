@@ -1,27 +1,28 @@
 <template name="player_remote">
 
+<div class='container'>
+<h1>{{tank.name}}</h1>
 
-<h1> hello </h1>
   {{#with tank}}
   <div  class="tank-box"
       id="tank-{{name}}"
       style="top:{{top}}px; left:{{left}}px;">
-  
+
       <div class="tank-label">
           {{name}}
       </div>
-  
+
       <img
       class='tank-icon'
       id="tank-{{name}}"
       style="transform: rotate({{rotate}}rad);"
       src="/images/players/tank{{idx}}.png"
       />
-  
+
   </div>
-  
+
   {{/with}}
- 
+
   <div>
     <p>
       name: {{tank.name}}
@@ -70,12 +71,13 @@
     </table>
   </div>
 
-  <a id="shoot" class="btn btn-large btn-default" href="#">Shoot</a>
-  <a id="move" class="btn btn-large btn-default" href="#">Move</a>
+  <a id="shoot" class="btn btn-huge btn-default" href="#">Shoot</a>
+  <br/>
+  <a id="move" class="btn btn-huge btn-default" href="#">Move</a>
 
-  <a class="pickBattle btn btn-large btn-red btnspacing center-block" href='/battle_lobby'>
+  <a class="leave-battle btn btn-large btn-red btnspacing center-block" href='/battle_lobby'>
   leave battle
   </a>    
 
-
+</div>
 </template>
