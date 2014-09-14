@@ -7,11 +7,7 @@
         </div>
       </div>
   </div>
-
-    <a 
-    class="btn btn-red center-block c" 
-    href="/battle/{{sessGet 'battleId'}}">Spectator mode!
-  </a> 
+ 
 
   <br />
 
@@ -21,12 +17,12 @@
       class="player-list-box" 
       id="player-{{name}}" >
 
-      <img  
+      <!-- <img  
         class='player-icon' 
         id="tank-{{name}}"
         src="/images/players/tank{{idx}}.png"
         style="transform: rotate({{rotate}}rad);"
-      />
+      /> -->
 
       <button tankid="{{idx}}" class="tankPick btn btn-large">
         <img 
@@ -40,10 +36,15 @@
     {{/each}}
   </div>
 
-
+  <br />
   <a 
     class="btn btn-red center-block c" 
     href="/battle_lobby">back to battle lobby
   </a> 
+  <br />
+  <a 
+    class="btn btn-red center-block c" 
+    href="/battle/{{sessGet 'battleId'}}">Spectator mode!
+  </a>
   
 </template>
