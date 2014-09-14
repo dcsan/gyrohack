@@ -55,7 +55,10 @@ MapItems.create = (obj) ->
   switch obj.type
     when "gold"
       obj.score = 100
+    when "bomb"
+      obj.score = -100
     else
+      console.warn("create item / unknown type")
       obj.score = 100  # default
 
   res = MapItems.insert(obj)

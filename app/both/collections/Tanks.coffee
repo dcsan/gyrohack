@@ -114,7 +114,7 @@ Tanks.reset = () ->
     Tanks.insert tank
 
 Tanks.updateAll = (battleId, battle) ->
-  # find the tanks 
+  # find the tanks
   tanks = Tanks.find({battleId: battleId}).fetch()
 
   # update those are moving
