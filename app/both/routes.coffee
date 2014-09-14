@@ -66,7 +66,8 @@ Router.map ->
     waitOn: ->
       [
         Meteor.subscribe("Tanks", {room: parseInt(@params.room) }),
-        Meteor.subscribe("Battles", {bid: parseInt(@params.room) })
+        Meteor.subscribe("Battles", {bid: parseInt(@params.room) }),
+        Meteor.subscribe("Bullets", {bid: parseInt(@params.room) })
       ]
     data: ->
       if @ready()
