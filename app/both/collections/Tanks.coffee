@@ -72,10 +72,12 @@ Tanks.helpers
     evt = {
       pageX: @left
       pageY: @top
+      itemType: "bomb"
+      score: -100
     }
-    # battle.addItem(
-    #   evt
-    # )
+    battle.addItem(
+      evt
+    )
     @msg("shoot #{vec}")
 
   collide: (item) ->

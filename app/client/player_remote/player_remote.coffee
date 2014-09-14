@@ -122,7 +122,8 @@ Template.player_remote.events =
   #   console.log("boosting", e.target.id)
 
   "click #shoot": (e) ->
+    e.preventDefault()
     tank.doShoot(1)
-    console.log("clicked shoot in ", battle)
+    # console.log("clicked shoot in ", e)
 
 
