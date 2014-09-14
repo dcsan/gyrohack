@@ -102,23 +102,27 @@ Template.player_remote.exitRoom = (roomId) ->
 Template.player_remote.events =
 
   "touchstart #move": (e) ->
+    e.preventDefault()
     tank.doBoost()
     console.log("boosting", e.target.id)
 
   "touchend #move": (e) ->
+    e.preventDefault()
     tank.doStop()
     console.log("stopped", e.target.id)
 
   # "mousedown #move": (e) ->
+  #   e.preventDefault()
   #   tank.doBoost()
   #   console.log("boosting", e.target.id)
 
   # "mouseup #move": (e) ->
+  #   e.preventDefault()
   #   tank.doStop()
   #   console.log("boosting", e.target.id)
 
   "click #shoot": (e) ->
-    tank.doShoot(-1)
+    tank.doShoot(1)
     console.log("clicked shoot in ", battle)
 
 

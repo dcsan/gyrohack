@@ -67,6 +67,15 @@ Tanks.helpers
 
   doShoot: (vec, battle) ->
     # tell Battle to handle the bullet
+    @shooting = true
+    battle = Battles.findOne({battleId: @battleId})
+    evt = {
+      pageX: @left
+      pageY: @top
+    }
+    # battle.addItem(
+    #   evt
+    # )
     @msg("shoot #{vec}")
 
   collide: (item) ->
