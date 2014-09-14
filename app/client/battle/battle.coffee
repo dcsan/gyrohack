@@ -3,6 +3,7 @@ data = null
 hasRun = false
 tank = null
 battle = null
+tanks = null
 
 handleKeys = (e) ->
   
@@ -58,3 +59,10 @@ Template.battle.events =
 
   "click #battle_map": (e) ->
     clickMap(e)
+
+if Meteor.isClient
+  update = () ->
+    console.log("update")
+  Meteor.setInterval(update, 50)
+
+

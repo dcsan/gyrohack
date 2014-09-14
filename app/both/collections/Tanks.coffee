@@ -27,9 +27,10 @@ Tanks.helpers
     _.extend(@, props)
     # console.log('player.setProps', props, @)
 
-  joinRoom: (battle) ->
+  joinRoom: (battle, battleKey) ->
     @setProps({
       battleId: battle.battleId
+      battleKey: battleKey
     })
 
   msg: (txt) ->

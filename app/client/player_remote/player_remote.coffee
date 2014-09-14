@@ -15,7 +15,7 @@ deviceMotionHandler = (eventData) ->
   @gamma_buffer.push eventData.rotationRate.gamma
 
   curEventTime = (new Date()).getTime()
-  return if (curEventTime - lastEventTime) < 100
+  return if (curEventTime - lastEventTime) < 50
 
   lastEventTime = curEventTime
   # console.log("pilot updated at, curTime", curEventTime)
