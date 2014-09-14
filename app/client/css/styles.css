@@ -72,6 +72,12 @@ a, a:hover{
 	margin-left: 4%;
 }
 
+.tankchoice2{
+	display:inline;
+	max-width: 65%;
+	margin-left: 17%;
+}
+
 .spacer{
 	margin-bottom: 100px;
 }
