@@ -1,7 +1,4 @@
 <template name="battle_lobby">
- 
-
-<h1>Choose a battle</h1>
   <div id="top">
       <div class="container">
         <div class="row">
@@ -17,9 +14,8 @@
   <li>
     <button class="pickBattle btn btn-large btn-red btnspacing center-block" 
       bid="{{this.bid}}" >
-      {{this.name}}
+      {{this.name}}<span class="badge pull-right"> {{this.tankCount}} tanks</span>
     </button>
-    tanks: {{this.tankCount}}
   </li>
   
 {{/each}}

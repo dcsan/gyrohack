@@ -27,6 +27,11 @@ Tanks.helpers
     _.extend(@, props)
     # console.log('player.setProps', props, @)
 
+  joinRoom: (battle) ->
+    @setProps({
+      battleId: battle.bid
+    })
+
   msg: (txt) ->
     $("#msg").text(txt)
   
@@ -70,5 +75,19 @@ Tanks.helpers
     @msg("shoot #{vec}")
 
 
+
+Meteor.startup ->
+  if Meteor.isServer
+
+    Tanks.remove({})
+    names = ["red", "blue", "green", "yellow" ]
+
+    idx = 1
+    _.each names, (name) ->
+      tank = {
+        idx: idx++
+        name: name
+      }
+      Tanks.insert tank
 
 
