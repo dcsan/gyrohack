@@ -10,7 +10,7 @@ Meteor.startup ->
         pid: 1
         top: 300
         left: 100
-        rotate: 90
+        rotate: 0
       }
       {
         name: "Bob"
@@ -46,7 +46,7 @@ Meteor.startup ->
         pid: 1
         top: 300
         left: 100
-        rotate: 90
+        rotate: 0
       }
       {
         name: "Bob"
@@ -54,17 +54,19 @@ Meteor.startup ->
         pid: 2
         top: 200
         left: 200
-        rotate: 60
+        rotate: 0
       }
       {
         name: "Chuck"
         room: 2
         pid: 3
+        rotate: 0
       }
       {
         name: "Dan"
         room: 2
         pid: 4
+        rotate: 0
       }
 
     ]

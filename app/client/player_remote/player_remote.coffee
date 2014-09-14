@@ -86,7 +86,7 @@ Template.player_remote.exitRoom = (room) ->
 
 
 clickMove = (e) ->
-  tank.doBoost(1)
+  tank.doBoost(30)
   console.log("clicked move", e.target.id)
 
 clickShoot = (e) ->

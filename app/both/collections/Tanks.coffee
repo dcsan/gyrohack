@@ -37,8 +37,8 @@ Tanks.helpers
     deltaX = Math.sin(curAngle)
     deltaY = Math.cos(curAngle)
 
-    t = @top + (deltaX * BOOST_SPEED)
-    l = @left + (deltaY * BOOST_SPEED)
+    t = @top + (deltaX * vel)
+    l = @left + (deltaY * vel)
 
     @setProps(top: t)
     @setProps(left: l)
@@ -50,12 +50,18 @@ Tanks.helpers
     @angle ?= Math.PI / 2
     angle = @angle + deltaRad
 
-    rotate = angle
+    #if angle < 0.5 * Math.PI
+    #  rotate = 0.5 * Math.PI - angle
+    #else if angle < 1.5 * Math.PI
+    #  rotate = angle - 0.5 * Math.PI
+    #else if angle < 2 * PI
+
+    rotate = angle + Math.PI / 2
     console.log("delta ", deltaRad)
     console.log("cur angle ", angle)
     console.log("cur rotate ", rotate)
-    @setProps(rotate: rotate)
-    @setProps(angle: angle)
+    @setProps({rotate: rotate})
+    @setProps({angle: angle})
     @msg("rotate #{@rotate}")
 
   doShoot: (vec) ->

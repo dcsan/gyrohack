@@ -34,10 +34,14 @@ Template.battle.exitRoom = (room) ->
 Template.battle.initBattle = (data) ->
   return if hasRun
   console.log("initBattle")
-  window.data = data
-  window.tanks = data.tanks # debug
+  window.data = data # debug
+  tanks = data.tanks.fetch() # debug
+  tank = tanks[0] # debug first tank's handle
+  window.tank = tank # debug
+
   battle = data.battle
-  console.log("tank1,2", tank)
+  window.battle = battle # debug
+
   $(window).on 'keydown', (e) -> handleKeys(e)
   hasRun = true
 
