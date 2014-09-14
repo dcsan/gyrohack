@@ -21,6 +21,9 @@ Router.map ->
     path: "/controls"
     layoutTemplate: "controls"
 
+  @route "remote",
+    path: "/remote"
+
   @route "mobile",
     path: "/mobile"
 
