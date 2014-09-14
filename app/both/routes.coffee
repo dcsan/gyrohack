@@ -66,12 +66,16 @@ Router.map ->
   @route "battle",
     path: "/battle/:room"
     waitOn: ->
-      Meteor.subscribe("Tanks", {room: parseInt(@params.room) })
+      [
+        Meteor.subscribe("Tanks", {room: parseInt(@params.room) }),
+        Meteor.subscribe("Battles", {bid: parseInt(@params.room) })
+      ]
     data: ->
       if @ready()
         @blob = {
           tankCount: Tanks.find().count()
           tanks: Tanks.find()
+          battle: Battles.find({bid: @params.bid})
         }
         Template.battle.initBattle(@blob)
         return @blob

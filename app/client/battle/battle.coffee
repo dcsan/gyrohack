@@ -1,11 +1,11 @@
 moveEvent = null
 data = null
-Battle = {
-  hasRun: false
-}
+hasRun = false
+tank = null
+battle = null
 
 handleKeys = (e) ->
-  tank = Battle.tanks[0]
+  
   # console.log("@tank", tank)
   switch e.keyCode
     when 39 #right
@@ -28,19 +28,18 @@ handleKeys = (e) ->
 # window events have to be removed manually when leaving page
 Template.battle.exitRoom = (room) ->
   console.log('player exitRoom', room)
-  Battle.hasRun = false
+  hasRun = false
   $(window).off 'keydown'
 
 Template.battle.initBattle = (data) ->
-  return if Battle.hasRun
+  return if hasRun
   console.log("initBattle")
   window.data = data
-  tank1 = Tanks.findOne()
-  tank2 = data.tanks.fetch()[0]
-  console.log("tank1,2", tank1, tank2)
-  Battle.tanks = [tank1, tank2]
+  tank = Tanks.findOne()
+  battle = data.battle
+  console.log("tank1,2", tank)
   $(window).on 'keydown', (e) -> handleKeys(e)
-  Battle.hasRun = true
+  hasRun = true
 
 clickTank = (e) ->
   console.log("clicked", e.target.id)
