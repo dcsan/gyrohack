@@ -1,12 +1,46 @@
 <template name="player_lobby">
 
+
   <div id="top">
       <div class="container">
         <div class="row">
-          <h1 class = "toptitle" style = "text-align:center;">Choose your Tank</h1>
+          <a href = "http://localhost:3000/"><img src='/images/logo3.png' style = "display:inline;" class = "headerimage2">
+          <h1 class = "toptitle" style = "display:inline;">GyroTanks<span class = "subtext2"> Version 1.0
+        </span></h1></a>
         </div>
       </div>
-  </div>
+
+
+<div class = "col-md-10 col-md-offset-1">
+    <br />
+    <h1 class = "toptitle" style = "color:#3C464F; text-align:center;">Choose your Tank</h1>
+    <br />
+    
+    <div class="player-lobby-list center-block">
+      {{#each tanks}}
+      <div 
+        class="player-list-box" 
+        id="player-{{name}}" >
+
+        <!-- <img  
+          class='player-icon' 
+          id="tank-{{name}}"
+          src="/images/players/tank{{idx}}.png"
+          style="transform: rotate({{rotate}}rad);"
+        /> -->
+        <button tankid="{{idx}}" class="tankPick btn btn-large">
+          <img 
+            src='/images/controlstank{{idx}}.png'
+            style = "display:inline;"
+            tankid="{{idx}}"
+            class="tankchoice" />
+        </button>
+      </div>
+
+      {{/each}}
+    </div>
+</div>  
+
 <div class = "col-md-6 col-md-offset-3">
   <a 
     class="btn btn-red center-block c" 
@@ -18,31 +52,5 @@
     href="/battle/{{sessGet 'battleId'}}">Spectator mode!
   </a>
 </div>
-<br />
-
-<div class = "col-md-3">
-  <div class="player-lobby-list">
-    {{#each tanks}}
-    <div 
-      class="player-list-box" 
-      id="player-{{name}}" >
-
-      <!-- <img  
-        class='player-icon' 
-        id="tank-{{name}}"
-        src="/images/players/tank{{idx}}.png"
-        style="transform: rotate({{rotate}}rad);"
-      /> -->
-      <button tankid="{{idx}}" class="tankPick btn btn-large">
-        <img 
-          src='/images/controlstank{{idx}}.png'
-          style = "display:inline;"
-          tankid="{{idx}}"
-          class="tankchoice" />
-      </button>
-    </div>
-
-    {{/each}}
-  </div>
-</div>  
+</div>
 </template>
