@@ -16,6 +16,7 @@ Router.map ->
 
   @route "splash",
     path: "/splash"
+    layoutTemplate: "splash"
 
   @route "controls",
     path: "/controls"
@@ -23,6 +24,7 @@ Router.map ->
 
   @route "remote",
     path: "/remote"
+    layoutTemplate: "remote"
 
   @route "mobile",
     path: "/mobile"
