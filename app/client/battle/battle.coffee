@@ -45,6 +45,8 @@ Template.battle.initBattle = (data) ->
   window.battle = battle # debug
 
   $(window).on 'keydown', (e) -> handleKeys(e)
+  if Meteor.isClient
+    Meteor.setInterval(update, 50)
   hasRun = true
 
 clickTank = (e) ->
@@ -60,9 +62,5 @@ Template.battle.events =
   "click #battle_map": (e) ->
     clickMap(e)
 
-if Meteor.isClient
-  update = () ->
-    console.log("update")
-  Meteor.setInterval(update, 50)
-
-
+update = () ->
+  MapItems.updateAll(window.data)

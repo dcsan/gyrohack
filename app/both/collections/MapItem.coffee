@@ -16,6 +16,10 @@ if Meteor.isServer
 
 MapItems.helpers
 
+  msg: (txt, obj) ->
+    console.log(txt, obj)
+    $("#msg").text(txt)
+
   setProps: (props) ->
     MapItems.update(
       @_id,
@@ -23,8 +27,19 @@ MapItems.helpers
     )
     _.extend(@, props)
 
+  deleteMe: () ->
+    @msg("delete mapItem #{@_id}")
+    MapItems.remove({_id: @_id})
+
   tick: () ->
-    setProps({age: @age+1})
+    @age = @age+1
+    if @age % 10 == 0
+      @msg("tick", @age)
+    @setProps({age: @age})
+    if @age > 200
+      return true
+    else
+      return false
 
 MapItems.reset = () ->
   console.log("MapItems.reset")
@@ -36,3 +51,12 @@ MapItems.create = (obj) ->
   obj.age = 0
   res = MapItems.insert(obj)
   return res
+
+MapItems.updateAll = (data) ->
+  mapItems = MapItems.find({battleId: data.battleId }).fetch()
+  _.each mapItems, (item) ->
+    # console.log("tick", item)
+    kill = item.tick()
+    if (kill)
+      item.deleteMe()
+  # console.log("items:", mapItems.count() )

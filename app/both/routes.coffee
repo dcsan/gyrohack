@@ -51,6 +51,7 @@ Router.map ->
         @blob = {
           tankCount: Tanks.find().count()
           itemCount: mapItems.count()
+          battleId: battleId
           tanks: Tanks.find({battleId: battleId})
           battle: Battles.findOne({battleId: battleId })
           mapItems: mapItems
