@@ -77,9 +77,14 @@ Battles.helpers
     @setProps(tanks: tanks)
 
   addItem: (evt) ->
-    item = new MapItem('gold')
-    loot = @items.push(item)
+    item = MapItems.create({
+      battle: this
+      px: 100
+      py: 100
+      type: "gold"
+    })
     console.log('addItem', item)
+    # loot = @items.push(item)
     # @setProps(lootItems: loot)
 
 

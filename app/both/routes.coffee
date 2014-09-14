@@ -101,6 +101,7 @@ Router.map ->
       Tanks.reset()
       Players.reset()
       Battles.reset()
+      MapItems.reset()
       @response.writeHead(200, {'Content-Type': 'text/html'})
       @response.end("reset: done")
 

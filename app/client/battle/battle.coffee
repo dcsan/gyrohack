@@ -50,7 +50,7 @@ clickTank = (e) ->
   console.log("clicked", e.target.id)
 
 clickMap = (e) ->
-  battle.addItem(e)
+  battle.addItem(e, battle)
 
 Template.battle.events =
   "click .tank-icon": (e) ->
