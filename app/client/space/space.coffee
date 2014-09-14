@@ -1,25 +1,23 @@
 lastEventTime = (new Date()).getTime()
+tank = null
+@TankInit = {
+  hasRun: false
+}
+@gamma_buffer = []
 
-player = null
-
-initGame = (data) ->
-  player = Players.findOne({name:data.playerName})
-  window.player = player
-  @gamma_buffer = []
 
 resizeHandler = (evt) ->
   console.log("resizeHandler", evt)
 
 deviceMotionHandler = (eventData) ->
-  return unless player
-
+  return unless tank
   @gamma_buffer.push eventData.rotationRate.gamma
 
   curEventTime = (new Date()).getTime()
   return if (curEventTime - lastEventTime) < 100
 
   lastEventTime = curEventTime
-  #console.log("pilot updated at, curTime", curEventTime)
+  console.log("pilot updated at, curTime", curEventTime)
 
   sum = 0
   for item in @gamma_buffer
@@ -30,7 +28,6 @@ deviceMotionHandler = (eventData) ->
 
   document.getElementById("debug").innerHTML = ave
   
-  # console.log("deviceMotionHandler", eventData)
   info = undefined
   xyz = "[X, Y, Z]"
 
@@ -67,37 +64,43 @@ deviceMotionHandler = (eventData) ->
 
   # console.log("rotate updated to: " + rotate)
 
-  Players.update(
-    player._id,
+  Tanks.update(
+    tank._id,
     $set: {
       rotate: rotate
     }
   )
   return
 
-Template.space.rendered = (obj) ->
-  # data = obj.data
-  console.log("rendered", obj, this)
-  console.log("data", this.data)
-  initGame(this.data)
-  enterRoom()
+Template.space.initSpace = (data) ->
+  return if TankInit.hasRun
+  TankInit.hasRun = true
+  
+  tank = data.tank
+  window.tank = tank # debug
+  gamma_buffer = []
 
-moveEvent = null
-
-enterRoom = (room) ->
-  console.log("enterRoom", room)
-  $(window).on 'resize', (e) -> resizeHandler
   window.addEventListener('devicemotion', deviceMotionHandler, false)
-
-  # $(window).on 'devicemotion', (e) -> deviceMotionHandler
-  # window.addEventListener "deviceorientation", ( (event) ->
-  #   deviceMotionHandler(event)
-  # ), false
-
+  console.log("init space ", data)
 
 # window events have to be removed manually when leaving page
 Template.space.exitRoom = (room) ->
   console.log('player exitRoom', room)
   window.removeEventListener('devicemotion', deviceMotionHandler, false)
+  TankInit.hasRun = false
 
-  # $(window).off 'devicemotion'
+
+clickMove = (e) ->
+  console.log("clicked move", e.target.id)
+
+clickShoot = (e) ->
+  console.log("clicked shoot", e.target.id)
+
+Template.space.events =
+  "click #move": (e) ->
+    clickMove(e)
+
+  "click #shoot": (e) ->
+    clickShoot(e)
+
+

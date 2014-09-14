@@ -7,9 +7,9 @@ Router.map ->
   @route "home",
     path: "/"
     waitOn: ->
-      Meteor.subscribe("Players", {} )
+      Meteor.subscribe("Tanks", {} )
     data: ->
-      players: Players.find().fetch()
+      tanks: Tanks.find().fetch()
 
   @route "lobby",
     path: "/lobby"
@@ -55,15 +55,20 @@ Router.map ->
       Template.battle.exitRoom(@params.room)
 
   @route "space",
-    path: "/space/:room?"
+    path: "/space/:tankId"
+    waitOn: ->
+      Meteor.subscribe("Tanks", {room: parseInt(@params.tankId) })
     data: ->
-      playerName = @params.room
-      return {
-        playerName: playerName
-        player: Players.findOne({name: playerName})
-      }
+      if @ready()
+        tankId = parseInt(@params.tankId) # not using players for now
+        @blob = {
+          tankId: tankId
+          tank: Tanks.findOne({pid: tankId})
+        }
+        Template.space.initSpace(@blob)
+        return @blob
     onStop: ->
-      Template.space.exitRoom(@params.room)
+      Template.space.exitRoom(@params.tankId)
 
   @route "viewer",
     path: "/viewer/:playerName?"
