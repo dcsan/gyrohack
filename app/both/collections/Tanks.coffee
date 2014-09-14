@@ -36,23 +36,27 @@ Tanks.helpers
   msg: (txt) ->
     $("#msg").text(txt)
   
-  doBoost: (vel) ->
+  doBoost: () ->
     curAngle = @angle or Math.PI / 2 # default to rotation 0
     console.log("angle ", @angle) # debug
 
     deltaX = Math.sin(curAngle)
     deltaY = Math.cos(curAngle)
 
-    t = @top + (deltaX * vel)
-    l = @left + (deltaY * vel)
-    console.log("left ", @left) # debug
-    console.log("top ", @top) # debug
+#    t = @top + (deltaX * vel)
+#    l = @left + (deltaY * vel)
+#    console.log("left ", @left) # debug
+#    console.log("top ", @top) # debug
 
-    @setProps(top: t)
-    @setProps(left: l)
+#    @setProps(top: t)
+#    @setProps(left: l)
+   
+    @setProps("boosting", true)
+    @msg("boosting #{@boosting}")
 
-    @msg("top #{@top}")
-    @msg("left #{@left}")
+  doStop: () ->
+    @setProps("boosting", false)
+    @msg("boosting #{@boosting}")
 
   doRotate: (deltaRad) ->
     @angle ?= Math.PI / 2
@@ -65,9 +69,9 @@ Tanks.helpers
     #else if angle < 2 * PI
 
     rotate = angle + Math.PI / 2
-    console.log("delta ", deltaRad)
-    console.log("cur angle ", angle)
-    console.log("cur rotate ", rotate)
+    #console.log("delta ", deltaRad)
+    #console.log("cur angle ", angle)
+    #console.log("cur rotate ", rotate)
     @setProps({rotate: rotate})
     @setProps({angle: angle})
     @msg("rotate #{@rotate}")

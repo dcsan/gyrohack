@@ -4,6 +4,7 @@ hasRun = false
 tank = null
 battle = null
 tanks = null
+theLoop = null
 
 handleKeys = (e) ->
   
@@ -31,6 +32,8 @@ Template.battle.exitRoom = (room) ->
   console.log('player exitRoom', room)
   hasRun = false
   $(window).off 'keydown'
+  Meteor.clearInterval(theLoop)
+  
 
 Template.battle.initBattle = (data) ->
   return if hasRun
@@ -46,8 +49,9 @@ Template.battle.initBattle = (data) ->
 
   $(window).on 'keydown', (e) -> handleKeys(e)
   if Meteor.isClient
-    Meteor.setInterval(update, 50)
+    theLoop = Meteor.setInterval(update, 50)
   hasRun = true
+
 
 clickTank = (e) ->
   console.log("clicked", e.target.id)
@@ -64,3 +68,21 @@ Template.battle.events =
 
 update = () ->
   MapItems.updateAll(window.data)
+  
+  # update tanks positions
+  for tank in battle.tanks
+    if tank.boosting
+      curAngle = tank.angle or Math.PI / 2
+      console.log("angle ", curAngle) # debug
+
+      deltaX = Math.sin(curAngle)
+      deltaY = Math.cos(curAngle)
+
+      t = tank.top + (deltaX * 5)
+      l = tank.left + (deltaY * 5)
+
+      console.log("left ", l) # debug
+      console.log("top ", t) # debug
+
+      tank.setProps({"left": l, "top": t})
+
