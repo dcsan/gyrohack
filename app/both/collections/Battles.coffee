@@ -66,8 +66,13 @@ Battles.helpers
     return @tanks.length
 
   addTank: (tank) ->
-    console.log("adding tank #{tank._id} to battle #{@bid}")
+    console.log("battle.addTank #{tank._id} to battle #{@bid}")
     @tanks.push(tank._id)
     @setProps(tanks: @tanks) # save it
+
+  removeTank: (tank) ->
+    console.log("battle.removeTank tank #{tank._id} to battle #{@bid}")
+    tanks = _.reject @tanks, (tankId) -> tankId == tank._id
+    @setProps(tanks: tanks)
 
 
