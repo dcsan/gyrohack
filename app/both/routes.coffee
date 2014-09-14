@@ -20,6 +20,9 @@ Router.map ->
   @route "controls",
     path: "/controls"
 
+  @route "remote",
+    path: "/remote"
+
   @route "mobile",
     path: "/mobile"
 
