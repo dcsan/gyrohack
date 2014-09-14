@@ -1,4 +1,5 @@
 TANK_SIZE = 100
+OFFSET = 20
 pickTank = (e) ->
   # debugger;
   tid = $(e.target).attr("tankid")
@@ -23,19 +24,19 @@ pickTank = (e) ->
   console.log("w =" + w + " h = " + h)
   if tid == 1
       #upper left
-      tank.setProps({top:0, left:0})
+      tank.setProps({top:OFFSET, left:OFFSET})
       console.log("tank " + tid)
   else if tid == 2
       #upper right
-      tank.setProps({top:0, left:w - TANK_SIZE})
+      tank.setProps({top:OFFSET, left:w - TANK_SIZE - OFFSET})
       console.log("tank " + tid)
   else if tid == 3
       #lower left
-      tank.setProps({top:h - TANK_SIZE, left:0})
+      tank.setProps({top:h - TANK_SIZE - OFFSET, left:OFFSET})
       console.log("tank " + tid)
   else if tid == 4
       #lower right
-      tank.setProps({top:h - TANK_SIZE, left:w - TANK_SIZE})
+      tank.setProps({top:h - TANK_SIZE - OFFSET, left:w - TANK_SIZE - OFFSET})
       console.log("tank " + tid)
 
   Router.go("/player_remote/#{tid}")

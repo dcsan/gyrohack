@@ -60,7 +60,7 @@ Template.battle.initBattle = (data) ->
 
 update = () ->
   MapItems.updateAll(window.data)
-  Tanks.updateAll(window.data.battleId)
+  Tanks.updateAll(window.data.battleId, window.data.battle)
 
 clickTank = (e) ->
   console.log("clicked", e.target.id)

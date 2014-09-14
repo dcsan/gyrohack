@@ -2,6 +2,7 @@
 
 BOOST_SPEED = 1
 ROTATE_SPEED = 1
+TANK_SIZE = 100
 
 if Meteor.isServer
   Meteor.publish "Tanks", (query) ->
@@ -110,13 +111,14 @@ Tanks.reset = () ->
     }
     Tanks.insert tank
 
-Tanks.updateAll = (battleId) ->
+Tanks.updateAll = (battleId, battle) ->
   # find the tanks 
   tanks = Tanks.find({battleId: battleId}).fetch()
 
   # update those are moving
   _.each tanks, (tank) ->
     if tank.boosting
+
       curAngle = tank.angle or Math.PI / 2
 
       deltaX = Math.sin(curAngle)
@@ -125,5 +127,22 @@ Tanks.updateAll = (battleId) ->
       t = tank.top + (deltaX * 5)
       l = tank.left + (deltaY * 5)
 
-      tank.setProps({"left": l, "top": t})
+      top_left = boundingBoxCheck(t, l, battle.h, battle.w)
 
+      tank.setProps({"left": top_left.left, "top": top_left.top})
+
+
+boundingBoxCheck = (top, left, h, w) ->
+  if top < 0
+    console.log("touch top")
+    top = 0
+  if left < 0
+    left = 0
+    console.log("touch left")
+  if top > h - TANK_SIZE
+    top = h - TANK_SIZE
+    console.log("touch bottom")
+  if left > w - TANK_SIZE
+    left = w - TANK_SIZE
+    console.log("touch right")
+  return {top: top, left: left}
