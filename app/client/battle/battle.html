@@ -4,8 +4,11 @@
   <div id="msg">ready</div>
 
   {{#each tanks}}
-  <div class="player-box" id="player-{{name}}" style="top:{{top}}px; left:{{left}}px;">
-    <div class="player-label">
+  <div  class="tank-box" 
+        id="tank-{{name}}" 
+        style="top:{{top}}px; left:{{left}}px;">
+        
+    <div class="tank-label">
       name: {{name}}
     </div>
 
@@ -13,7 +16,7 @@
       class='tank-icon' 
       id="tank-{{name}}"
       style="transform: rotate({{rotate}}deg);"
-      src="/images/players/p{{pid}}.png"
+      src="/images/players/tank{{pid}}.png"
     />
 
   </div>
