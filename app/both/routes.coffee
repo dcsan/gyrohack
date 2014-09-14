@@ -19,6 +19,7 @@ Router.map ->
 
   @route "controls",
     path: "/controls"
+    layoutTemplate: "controls"
 
   @route "mobile",
     path: "/mobile"
