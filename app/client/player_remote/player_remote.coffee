@@ -94,6 +94,7 @@ Template.player_remote.exitRoom = (roomId) ->
   console.log('data', data)
   window.removeEventListener('devicemotion', deviceMotionHandler, false)
   data.battle.removeTank(data.tank)
+  tank.setProps({battleId: null})
   TankInit.hasRun = false
 
 

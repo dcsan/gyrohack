@@ -1,5 +1,5 @@
 
-cd app && meteor deploy gyrohack.meteor.com
+cd app && meteor deploy gyrotanks.meteor.com
 
 ## after cd app we have to cd back?
 cd -

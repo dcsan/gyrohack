@@ -8,15 +8,15 @@ handleKeys = (e) ->
   
   # console.log("@tank", tank)
   switch e.keyCode
-    when 39 #right
+    when 39, 68 #right
       tank.doRotate(1)
-    when 37 # left
+    when 37, 65 # left
       tank.doRotate(-1)
-    when 40 #up
+    when 40, 87 #up
       tank.doBoost(1)
-    when 38 #down
+    when 38, 83 #down
       tank.doBoost(-1)
-    when 32
+    when 32, 13
       tank.doShoot(-1)
     else
       console.log('unused key:', e.keyCode)
