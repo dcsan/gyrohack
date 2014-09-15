@@ -1,1 +1,1 @@
-cd app && meteor run
+cd app && meteor run --settings private/config/local.json

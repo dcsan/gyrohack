@@ -1,3 +1,7 @@
+SOCKET_EVENT_TIME = 500
+
+console.log("SOCKET_EVENT_TIME:", 500)
+
 lastEventTime = (new Date()).getTime()
 tank = null
 @TankInit = {
@@ -15,14 +19,14 @@ deviceMotionHandler = (eventData) ->
   @gamma_buffer.push eventData.rotationRate.gamma
 
   curEventTime = (new Date()).getTime()
-  return if (curEventTime - lastEventTime) < 50
+  return if (curEventTime - lastEventTime) < SOCKET_EVENT_TIME
 
   lastEventTime = curEventTime
   # console.log("pilot updated at, curTime", curEventTime)
 
   sum = 0
   for item in @gamma_buffer
-      sum += item
+    sum += item
 
   ave = sum / @gamma_buffer.length
   @gamma_buffer = []

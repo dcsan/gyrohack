@@ -1,0 +1,27 @@
+{
+    "public": {
+        "mode" : "prod",
+        "ddplogLevel": 1,
+        "ga": {
+            "id": "UA-53450299-2",
+            "trackInterests": true,
+            "trackInPage": true,
+            "require": {
+                "displayfeatures": true,
+                "linkid": "linkid.js"
+            }
+        }
+    },
+    "loginServices": {
+        "facebook": {
+            "service": "facebook",
+            "appId": "298709586975908",
+            "secret": "561f6d036184a6789cba157a0dfaf971"
+        },
+        "restrictLogins": false,
+        "allowedFBEmails": [
+            "bret@abitrandom.net",
+            "dc5@pikkle.com"
+        ]
+    }
+}

@@ -1,13 +1,12 @@
 
 TGT="gyrotanks.meteor.com"
-cd app && meteor deploy $TGT
-
+cd app && meteor deploy $TGT --settings private/config/prod.json redes.meteor.com
 
 ## after cd app we have to cd back?
 cd -
 
 # give meteor time to restart
-sleep 10
+sleep 5
 curl "${TGT}/reset"
 
 meteor logs redes.meteor.com
